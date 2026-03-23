@@ -1,0 +1,75 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}Contact Us - ND Store{% endblock %}
+
+{% block content %}
+<section class="relative overflow-hidden">
+  <div class="absolute inset-0 bg-[url('https://images.pexels.com/photos/11666903/pexels-photo-11666903.jpeg?cs=srgb&dl=pexels-matreding-11666903.jpg&fm=jpg')] bg-cover bg-center"></div>
+  <div class="absolute inset-0 bg-gradient-to-br from-slate-950/95 via-slate-900/85 to-slate-950/90"></div>
+  <div class="container-custom relative z-10 py-20 text-white">
+    <p class="text-xs uppercase tracking-[0.3em] text-slate-300">Contact</p>
+    <h1 class="mt-4 text-4xl md:text-6xl font-display font-semibold">Let's build something reliable</h1>
+    <p class="mt-4 text-lg text-slate-200 max-w-2xl">Tell us about your project and we will deliver a tailored procurement and logistics plan.</p>
+  </div>
+</section>
+
+<section class="py-20 bg-white">
+  <div class="container-custom">
+    {% if messages %}
+    <div class="mb-8">
+      {% for message in messages %}
+      <div class="bg-emerald-50 border border-emerald-200 text-emerald-700 p-4 rounded-xl">{{ message }}</div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="grid gap-10 lg:grid-cols-2">
+      <div class="card-neo rounded-3xl p-8">
+        <h2 class="text-2xl font-display font-semibold">Contact information</h2>
+        <p class="mt-3 text-slate-500">We respond within 2 hours during business hours.</p>
+        <div class="mt-8 grid gap-6 text-sm text-slate-600">
+          <div>
+            <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Visit</p>
+            <p class="mt-2 font-semibold text-slate-700">22 Ikoyi Road, Lagos, Nigeria</p>
+          </div>
+          <div>
+            <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Call</p>
+            <p class="mt-2 font-semibold text-slate-700">+234 801 234 5678</p>
+            <p class="text-slate-500">+234 802 555 7890</p>
+          </div>
+          <div>
+            <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Email</p>
+            <p class="mt-2 font-semibold text-slate-700">uncle@primeshop.com.ng</p>
+            <p class="text-slate-500">sales@unclesprime.com</p>
+          </div>
+          <div>
+            <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Hours</p>
+            <p class="mt-2 text-slate-700">Mon-Fri: 8am-6pm</p>
+            <p class="text-slate-500">Sat: 9am-2pm</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-neo rounded-3xl p-8">
+        <h2 class="text-2xl font-display font-semibold">Send a message</h2>
+        <form method="POST" class="mt-6 grid gap-4">
+          {% csrf_token %}
+          <input type="text" name="name" placeholder="Full Name *" required class="w-full rounded-xl border border-slate-200 px-4 py-3 focus:ring-2 focus:ring-accent focus:border-transparent">
+          <input type="email" name="email" placeholder="Email Address *" required class="w-full rounded-xl border border-slate-200 px-4 py-3 focus:ring-2 focus:ring-accent focus:border-transparent">
+          <input type="tel" name="phone" placeholder="Phone Number *" required class="w-full rounded-xl border border-slate-200 px-4 py-3 focus:ring-2 focus:ring-accent focus:border-transparent">
+          <textarea name="message" rows="5" placeholder="Your Message *" required class="w-full rounded-xl border border-slate-200 px-4 py-3 focus:ring-2 focus:ring-accent focus:border-transparent"></textarea>
+          <button type="submit" class="btn-primary text-white font-semibold py-3 rounded-xl transition">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-12 bg-slate-50">
+  <div class="container-custom">
+    <div class="rounded-3xl overflow-hidden shadow-2xl h-[380px]">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.572434594625!2d3.427212314769322!3d6.465743695338236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf4e8c5c1c9e9%3A0x7b8b3f8c9a0a5f4!2sLagos%2C%20Nigeria!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+{% endblock %}

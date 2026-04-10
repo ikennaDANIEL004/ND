@@ -1,9 +1,10 @@
 {% extends 'shop/base.html' %}
 {% load static %}
 
-{% block title %}Home - ND Store | Nigeria's Electrical & Building Materials Hub{% endblock %}
+{% block title %}Home - Cause of Our Joy Builders | Electrical Materials Supplier{% endblock %}
 
 {% block content %}
+<!-- Hero section introduces the company value proposition. -->
 <section class="relative overflow-hidden">
   <div class="absolute inset-0 bg-[url('https://images.pexels.com/photos/24486690/pexels-photo-24486690.jpeg?cs=srgb&dl=pexels-italo-crespi-177113476-24486690.jpg&fm=jpg')] bg-cover bg-center"></div>
   <div class="absolute inset-0 bg-gradient-to-br from-slate-950/95 via-slate-900/85 to-slate-950/90"></div>
@@ -12,32 +13,32 @@
   <div class="container-custom relative z-10 py-24 md:py-32">
     <div class="grid gap-12 lg:grid-cols-2 items-center">
       <div class="text-white fade-up">
-        <span class="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-xs uppercase tracking-[0.3em] text-slate-300">Trusted since 2002</span>
+        <span class="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-xs uppercase tracking-[0.3em] text-slate-300">Trusted electrical materials merchant</span>
         <h1 class="mt-6 text-4xl md:text-6xl font-display font-semibold leading-tight">
-          Infrastructure-grade supply
-          <span class="block text-gradient">for Nigeria's next decade</span>
+          Cause of Our Joy Builders
+          <span class="block text-gradient">electrical materials for homes, shops, and projects</span>
         </h1>
-        <p class="mt-6 text-lg text-slate-200 max-w-xl">Premium electrical, solar, and building materials for corporate projects, OEM partnerships, and high-impact infrastructure. Verified sourcing, strict QA, and nationwide delivery.</p>
+        <p class="mt-6 text-lg text-slate-200 max-w-xl">We specialize in the import, sale, and marketing of electrical materials, serving customers across Abuja and the North Central region of Nigeria with dependable supply and prompt delivery.</p>
         <div class="mt-8 flex flex-wrap gap-4">
-          <a href="#products" class="btn-primary px-8 py-3 rounded-full text-white font-semibold transition">Explore Products</a>
-          <a href="{% url 'contact' %}" class="px-8 py-3 rounded-full border border-white/40 text-white font-semibold hover:bg-white/10 transition">Request Quote</a>
+          <a href="#products" class="btn-primary px-8 py-3 rounded-full text-white font-semibold transition">View Materials</a>
+          <a href="{% url 'contact' %}" class="px-8 py-3 rounded-full border border-white/40 text-white font-semibold hover:bg-white/10 transition">Call for Supply</a>
         </div>
         <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
           <div>
-            <div class="text-2xl font-display font-semibold">23+</div>
-            <div class="text-slate-300">Years in market</div>
+            <div class="text-2xl font-display font-semibold">20+</div>
+            <div class="text-slate-300">Years in sales and marketing</div>
           </div>
           <div>
-            <div class="text-2xl font-display font-semibold">500+</div>
-            <div class="text-slate-300">Corporate clients</div>
+            <div class="text-2xl font-display font-semibold">Abuja</div>
+            <div class="text-slate-300">Core delivery base</div>
           </div>
           <div>
-            <div class="text-2xl font-display font-semibold">36</div>
-            <div class="text-slate-300">States covered</div>
+            <div class="text-2xl font-display font-semibold">North Central</div>
+            <div class="text-slate-300">Regional coverage</div>
           </div>
           <div>
-            <div class="text-2xl font-display font-semibold">98%</div>
-            <div class="text-slate-300">On-time delivery</div>
+            <div class="text-2xl font-display font-semibold">B4-64</div>
+            <div class="text-slate-300">Dei Dei market location</div>
           </div>
         </div>
       </div>
@@ -46,114 +47,116 @@
         <div class="glass-dark rounded-3xl p-6 shadow-2xl">
           <div class="grid gap-4">
             <div class="rounded-2xl overflow-hidden">
-              <img src="https://images.pexels.com/photos/11666903/pexels-photo-11666903.jpeg?cs=srgb&dl=pexels-matreding-11666903.jpg&fm=jpg" alt="Distribution warehouse" class="w-full h-64 object-cover">
+              <img src="https://images.pexels.com/photos/11666903/pexels-photo-11666903.jpeg?cs=srgb&dl=pexels-matreding-11666903.jpg&fm=jpg" alt="Electrical materials market supply" class="w-full h-64 object-cover">
             </div>
             <div class="grid grid-cols-2 gap-4">
               <div class="rounded-2xl bg-white/10 p-4">
-                <p class="text-xs uppercase tracking-[0.2em] text-slate-300">Live inventory</p>
-                <p class="text-2xl font-display font-semibold text-white mt-2">42k+</p>
-                <p class="text-sm text-slate-300">SKUs tracked daily</p>
+                <p class="text-xs uppercase tracking-[0.2em] text-slate-300">Supply focus</p>
+                <p class="text-2xl font-display font-semibold text-white mt-2">Import</p>
+                <p class="text-sm text-slate-300">Quality electrical materials</p>
               </div>
               <div class="rounded-2xl bg-white/10 p-4">
-                <p class="text-xs uppercase tracking-[0.2em] text-slate-300">Project SLA</p>
-                <p class="text-2xl font-display font-semibold text-white mt-2">24-72h</p>
-                <p class="text-sm text-slate-300">Nationwide dispatch</p>
+                <p class="text-xs uppercase tracking-[0.2em] text-slate-300">Delivery zone</p>
+                <p class="text-2xl font-display font-semibold text-white mt-2">Fast</p>
+                <p class="text-sm text-slate-300">Abuja and North Central</p>
               </div>
             </div>
           </div>
         </div>
         <div class="absolute -bottom-6 -left-6 hidden md:block bg-white/15 rounded-2xl p-4 text-white text-sm float-soft">
-          <p class="uppercase tracking-[0.2em] text-[11px] text-slate-300">Verified</p>
-          <p class="font-display text-lg">SON-certified materials</p>
+          <p class="uppercase tracking-[0.2em] text-[11px] text-slate-300">COJB</p>
+          <p class="font-display text-lg">Trusted market supplier</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- Service pillars explain the three main business strengths. -->
 <section class="py-16 bg-white">
   <div class="container-custom">
     <div class="grid gap-6 md:grid-cols-3">
       <div class="card-neo rounded-2xl p-6">
-        <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Strategic sourcing</p>
-        <h3 class="mt-3 text-xl font-display font-semibold">Global manufacturer access</h3>
-        <p class="mt-3 text-sm text-slate-500">Direct factory procurement for cables, generators, solar panels, cement, and roofing materials.</p>
+        <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Importation</p>
+        <h3 class="mt-3 text-xl font-display font-semibold">Reliable sourcing of electrical materials</h3>
+        <p class="mt-3 text-sm text-slate-500">We import trusted electrical products and make them available to contractors, traders, and end users.</p>
       </div>
       <div class="card-neo rounded-2xl p-6">
-        <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Assured quality</p>
-        <h3 class="mt-3 text-xl font-display font-semibold">Multi-step QA checkpoints</h3>
-        <p class="mt-3 text-sm text-slate-500">Batch testing, compliance documentation, and on-site verification before dispatch.</p>
+        <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Sales</p>
+        <h3 class="mt-3 text-xl font-display font-semibold">Wholesale and retail supply</h3>
+        <p class="mt-3 text-sm text-slate-500">From market traders to project buyers, we support both bulk and everyday electrical material needs.</p>
       </div>
       <div class="card-neo rounded-2xl p-6">
-        <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Rapid logistics</p>
-        <h3 class="mt-3 text-xl font-display font-semibold">36-state delivery mesh</h3>
-        <p class="mt-3 text-sm text-slate-500">Real-time routing, dedicated fleet, and secure last-mile partner network.</p>
+        <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Marketing</p>
+        <h3 class="mt-3 text-xl font-display font-semibold">Product awareness and market reach</h3>
+        <p class="mt-3 text-sm text-slate-500">We help move trusted electrical materials into the hands of the right buyers across our service region.</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- Product grid highlights the electrical categories customers buy most. -->
 <section id="products" class="py-20 bg-slate-50">
   <div class="container-custom">
     <div class="flex flex-wrap items-end justify-between gap-4 mb-10">
       <div>
-        <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Product matrix</p>
-        <h2 class="text-3xl md:text-5xl font-display font-semibold">Materials Nigerians rely on</h2>
+        <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Electrical materials</p>
+        <h2 class="text-3xl md:text-5xl font-display font-semibold">Products our customers ask for every day</h2>
       </div>
-      <a href="{% url 'contact' %}" class="text-sm font-semibold text-accent hover:text-ink">Request bulk pricing</a>
+      <a href="{% url 'contact' %}" class="text-sm font-semibold text-accent hover:text-ink">Contact for prices</a>
     </div>
 
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       <div class="card-neo rounded-2xl overflow-hidden">
-        <img src="https://cdn.pixabay.com/photo/2016/06/17/01/17/diesel-generators-1462424_1280.png" alt="Industrial generators" class="h-56 w-full object-cover">
-        <div class="p-6">
-          <h3 class="text-xl font-display font-semibold">Industrial Generators</h3>
-          <p class="text-sm text-slate-500 mt-2">20kVA to 500kVA units with nationwide maintenance partners.</p>
-          <a href="{% url 'contact' %}" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent">Get quote</a>
-        </div>
-      </div>
-
-      <div class="card-neo rounded-2xl overflow-hidden">
-        <img src="https://images.pexels.com/photos/29519165/pexels-photo-29519165.jpeg?cs=srgb&dl=pexels-arthur-uzoagba-3061628-29519165.jpg&fm=jpg" alt="Cement bags" class="h-56 w-full object-cover">
-        <div class="p-6">
-          <h3 class="text-xl font-display font-semibold">Cement & Aggregates</h3>
-          <p class="text-sm text-slate-500 mt-2">Bulk supply with truckload discounts and verified SON compliance.</p>
-          <a href="{% url 'contact' %}" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent">Get quote</a>
-        </div>
-      </div>
-
-      <div class="card-neo rounded-2xl overflow-hidden">
         <img src="https://cdn.pixabay.com/photo/2021/08/29/03/37/electricity-6582300_1280.jpg" alt="Electrical cables" class="h-56 w-full object-cover">
         <div class="p-6">
-          <h3 class="text-xl font-display font-semibold">Certified Electrical Cables</h3>
-          <p class="text-sm text-slate-500 mt-2">Fire-resistant copper core cables with NEMSA documentation.</p>
+          <h3 class="text-xl font-display font-semibold">Electrical Cables</h3>
+          <p class="text-sm text-slate-500 mt-2">Strong and reliable cable options for residential, commercial, and industrial jobs.</p>
           <a href="{% url 'contact' %}" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent">Get quote</a>
         </div>
       </div>
 
       <div class="card-neo rounded-2xl overflow-hidden">
-        <img src="https://images.pexels.com/photos/5691611/pexels-photo-5691611.jpeg?cs=srgb&dl=pexels-kseniachernaya-5691611.jpg&fm=jpg" alt="Paint roller" class="h-56 w-full object-cover">
+        <img src="https://images.pexels.com/photos/29519165/pexels-photo-29519165.jpeg?cs=srgb&dl=pexels-arthur-uzoagba-3061628-29519165.jpg&fm=jpg" alt="Switches and sockets" class="h-56 w-full object-cover">
         <div class="p-6">
-          <h3 class="text-xl font-display font-semibold">Interior & Exterior Paints</h3>
-          <p class="text-sm text-slate-500 mt-2">Weather-tested coatings, large-format color mixing, and sealing solutions.</p>
+          <h3 class="text-xl font-display font-semibold">Switches and Sockets</h3>
+          <p class="text-sm text-slate-500 mt-2">Durable fittings for homes, offices, and project installations.</p>
           <a href="{% url 'contact' %}" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent">Get quote</a>
         </div>
       </div>
 
       <div class="card-neo rounded-2xl overflow-hidden">
-        <img src="https://images.pexels.com/photos/9875418/pexels-photo-9875418.jpeg?cs=srgb&dl=pexels-kindelmedia-9875418.jpg&fm=jpg" alt="Solar panel installation" class="h-56 w-full object-cover">
+        <img src="https://cdn.pixabay.com/photo/2016/06/17/01/17/diesel-generators-1462424_1280.png" alt="Circuit breakers" class="h-56 w-full object-cover">
         <div class="p-6">
-          <h3 class="text-xl font-display font-semibold">Solar & Inverter Systems</h3>
-          <p class="text-sm text-slate-500 mt-2">Complete solar packages with battery storage and installation partners.</p>
+          <h3 class="text-xl font-display font-semibold">Circuit Breakers</h3>
+          <p class="text-sm text-slate-500 mt-2">Protection devices and accessories for safe and efficient electrical setups.</p>
           <a href="{% url 'contact' %}" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent">Get quote</a>
         </div>
       </div>
 
       <div class="card-neo rounded-2xl overflow-hidden">
-        <img src="https://images.pexels.com/photos/15562154/pexels-photo-15562154.jpeg?cs=srgb&dl=pexels-tom-van-dyck-423949093-15562154.jpg&fm=jpg" alt="Roof tiles" class="h-56 w-full object-cover">
+        <img src="https://images.pexels.com/photos/5691611/pexels-photo-5691611.jpeg?cs=srgb&dl=pexels-kseniachernaya-5691611.jpg&fm=jpg" alt="Lighting materials" class="h-56 w-full object-cover">
         <div class="p-6">
-          <h3 class="text-xl font-display font-semibold">Roofing & Cladding</h3>
-          <p class="text-sm text-slate-500 mt-2">Longspan sheets, heat-reflective tiles, and rust-proof fasteners.</p>
+          <h3 class="text-xl font-display font-semibold">Lighting Materials</h3>
+          <p class="text-sm text-slate-500 mt-2">Bulbs, fittings, and lighting accessories for shops, homes, and larger projects.</p>
+          <a href="{% url 'contact' %}" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent">Get quote</a>
+        </div>
+      </div>
+
+      <div class="card-neo rounded-2xl overflow-hidden">
+        <img src="https://images.pexels.com/photos/9875418/pexels-photo-9875418.jpeg?cs=srgb&dl=pexels-kindelmedia-9875418.jpg&fm=jpg" alt="Electrical accessories" class="h-56 w-full object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-display font-semibold">Electrical Accessories</h3>
+          <p class="text-sm text-slate-500 mt-2">Conduits, connectors, tapes, fittings, and other essentials for smooth installations.</p>
+          <a href="{% url 'contact' %}" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent">Get quote</a>
+        </div>
+      </div>
+
+      <div class="card-neo rounded-2xl overflow-hidden">
+        <img src="https://images.pexels.com/photos/15562154/pexels-photo-15562154.jpeg?cs=srgb&dl=pexels-tom-van-dyck-423949093-15562154.jpg&fm=jpg" alt="Bulk project electrical supply" class="h-56 w-full object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-display font-semibold">Bulk Project Supply</h3>
+          <p class="text-sm text-slate-500 mt-2">Steady supply support for contractors, electrical dealers, and construction projects.</p>
           <a href="{% url 'contact' %}" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent">Get quote</a>
         </div>
       </div>
@@ -161,21 +164,22 @@
   </div>
 </section>
 
+<!-- Delivery section reinforces the service coverage and logistics promise. -->
 <section class="py-20 bg-white">
   <div class="container-custom">
     <div class="grid gap-10 lg:grid-cols-2 items-center">
       <div>
-        <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Distribution intelligence</p>
-        <h2 class="text-3xl md:text-5xl font-display font-semibold mt-3">A logistics network built for mission-critical projects</h2>
-        <p class="mt-4 text-slate-500">Our logistics stack combines regional hubs, verified transport partners, and QA checklists so your materials arrive on time and on spec.</p>
+        <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Delivery promise</p>
+        <h2 class="text-3xl md:text-5xl font-display font-semibold mt-3">We deliver where our customers need us most</h2>
+        <p class="mt-4 text-slate-500">Cause of Our Joy Builders serves customers within Abuja and the North Central region with practical, timely delivery for business and project needs.</p>
         <div class="mt-6 grid gap-4 md:grid-cols-2">
           <div class="rounded-2xl border border-slate-200 p-4">
-            <p class="text-sm font-semibold">Stock assurance</p>
-            <p class="text-xs text-slate-500 mt-2">Daily cycle counts and reorder alerts for fast-moving SKUs.</p>
+            <p class="text-sm font-semibold">Abuja coverage</p>
+            <p class="text-xs text-slate-500 mt-2">Fast supply and delivery for traders, installers, and project buyers within the FCT.</p>
           </div>
           <div class="rounded-2xl border border-slate-200 p-4">
-            <p class="text-sm font-semibold">Project visibility</p>
-            <p class="text-xs text-slate-500 mt-2">Dedicated account managers and progress reporting each week.</p>
+            <p class="text-sm font-semibold">North Central delivery</p>
+            <p class="text-xs text-slate-500 mt-2">Dependable regional supply support for customers outside Abuja but within North Central Nigeria.</p>
           </div>
         </div>
       </div>
@@ -184,19 +188,20 @@
           <img src="https://images.pexels.com/photos/11666903/pexels-photo-11666903.jpeg?cs=srgb&dl=pexels-matreding-11666903.jpg&fm=jpg" alt="Warehouse logistics" class="w-full h-96 object-cover">
         </div>
         <div class="absolute -bottom-6 right-6 bg-white rounded-2xl px-5 py-4 shadow-xl">
-          <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Average dispatch</p>
-          <p class="text-2xl font-display font-semibold mt-1">48 hours</p>
+          <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Service area</p>
+          <p class="text-2xl font-display font-semibold mt-1">Abuja + North Central</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- Final call to action directs visitors to contact the company. -->
 <section class="py-20 bg-slate-950 text-white">
   <div class="container-custom text-center">
-    <h2 class="text-3xl md:text-5xl font-display font-semibold">Ready to scale your next project?</h2>
-    <p class="mt-4 text-slate-300 max-w-2xl mx-auto">Let us coordinate your supply chain, logistics, and material QA so you can deliver with confidence.</p>
-    <a href="{% url 'contact' %}" class="mt-8 inline-flex items-center justify-center px-8 py-3 rounded-full btn-primary text-white font-semibold transition">Book a consultation</a>
+    <h2 class="text-3xl md:text-5xl font-display font-semibold">Need electrical materials for your next job?</h2>
+    <p class="mt-4 text-slate-300 max-w-2xl mx-auto">Speak with our team for trusted supply, honest service, and delivery support within our coverage area.</p>
+    <a href="{% url 'contact' %}" class="mt-8 inline-flex items-center justify-center px-8 py-3 rounded-full btn-primary text-white font-semibold transition">Reach COJB</a>
   </div>
 </section>
 {% endblock %}

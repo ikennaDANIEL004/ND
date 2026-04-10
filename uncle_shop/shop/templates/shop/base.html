@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>{% block title %}ND Store Group{% endblock %}</title>
+  <title>{% block title %}Cause of Our Joy Builders{% endblock %}</title>
 
+  <!-- Drawer logic controls the mobile navigation state. -->
   <script>
     tailwind.config = {
       theme: {
@@ -144,28 +145,17 @@
 </head>
 <body class="antialiased overflow-x-hidden">
 
-  <div class="bg-ink text-white text-xs md:text-sm">
-    <div class="container-custom py-2 flex flex-wrap items-center justify-between gap-2">
-      <div class="flex flex-wrap items-center gap-4">
-        <span class="uppercase tracking-[0.2em] text-[11px]">Nigeria Distribution Network</span>
-        <span class="text-slate-300">Bulk supply, logistics, and project support</span>
-      </div>
-      <div class="flex items-center gap-3">
-        <a href="tel:+2348012345678" class="hover:text-accent">+234 801 234 5678</a>
-        <span class="text-slate-600">|</span>
-        <a href="mailto:uncle@primeshop.com.ng" class="hover:text-accent">uncle@primeshop.com.ng</a>
-      </div>
-    </div>
-  </div>
 
-  <nav class="sticky top-0 z-50 glass">
-    <div class="container-custom py-4">
+
+  <!-- Main navigation stays clean and focused, especially on mobile. -->
+  <nav class="sticky top-3 z-50 px-3 md:px-0">
+    <div class="container-custom rounded-[1.75rem] glass px-4 py-3 shadow-[0_20px_45px_-30px_rgba(15,23,42,0.4)] md:px-6 md:py-4">
       <div class="flex flex-wrap items-center justify-between gap-4">
-        <a href="{% url 'home' %}" class="flex items-center gap-3">
-          <div class="h-10 w-10 rounded-2xl bg-ink text-white flex items-center justify-center font-display font-bold">ND</div>
+        <a href="{% url 'home' %}" class="flex min-w-0 items-center gap-3">
+          <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-ink text-white font-display text-sm font-bold shadow-lg shadow-slate-900/20">CO</div>
           <div>
-            <div class="font-display text-lg font-semibold text-ink">ND Store</div>
-            <div class="text-xs text-slate-500 -mt-1">Electrical & Building Materials</div>
+            <div class="truncate font-display text-base font-semibold text-ink md:text-lg">Cause of Our Joy Builders</div>
+            <div class="hidden text-xs text-slate-500 md:block">Electrical Materials Import, Sales & Marketing</div>
           </div>
         </a>
 
@@ -176,8 +166,8 @@
             <a href="{% url 'services' %}" class="hover:text-accent">Services</a>
             <a href="{% url 'contact' %}" class="hover:text-accent">Contact</a>
           </div>
-          <a href="{% url 'contact' %}" class="hidden md:inline-flex btn-primary text-white px-5 py-2 rounded-full font-semibold transition">Request Quote</a>
-          <button id="mobileMenuButton" class="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-full border border-slate-200 bg-white/80 text-ink" aria-controls="mobileMenu" aria-expanded="false">
+          <a href="{% url 'contact' %}" class="hidden md:inline-flex btn-primary text-white px-5 py-2 rounded-full font-semibold transition">Contact Us</a>
+          <button id="mobileMenuButton" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white/85 text-ink shadow-sm transition hover:border-accent/40 md:hidden" aria-controls="mobileMenu" aria-expanded="false">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
@@ -187,14 +177,16 @@
     </div>
   </nav>
 
+  <!-- Backdrop handles focus for the mobile drawer. -->
   <div id="mobileMenuBackdrop" class="fixed inset-0 bg-slate-950/40 opacity-0 pointer-events-none transition duration-300 z-40"></div>
+  <!-- Mobile navigation presents quick links and contact details in one place. -->
   <div id="mobileMenu" class="fixed top-0 right-0 h-full w-full max-w-sm translate-x-full transition duration-300 z-50">
     <div class="glass-dark h-full p-6 flex flex-col text-white">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <div class="h-10 w-10 rounded-2xl bg-white/10 flex items-center justify-center font-display font-bold">ND</div>
+          <div class="h-10 w-10 rounded-2xl bg-white/10 flex items-center justify-center font-display font-bold">CO</div>
           <div>
-            <div class="font-display text-lg font-semibold">ND Store</div>
+            <div class="font-display text-lg font-semibold">COJB</div>
             <div class="text-xs text-slate-300 -mt-1">Mobile navigation</div>
           </div>
         </div>
@@ -207,7 +199,7 @@
 
       <div class="mt-6">
         <div class="relative">
-          <input type="text" placeholder="Search products" class="w-full rounded-2xl bg-white/10 border border-white/10 px-4 py-3 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-accent">
+          <input type="text" placeholder="Search electrical materials" class="w-full rounded-2xl bg-white/10 border border-white/10 px-4 py-3 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-accent">
           <span class="absolute right-4 top-3 text-slate-400">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M18 11a7 7 0 11-14 0 7 7 0 0114 0z"></path>
@@ -224,12 +216,12 @@
       </nav>
 
       <div class="mt-8">
-        <a href="{% url 'contact' %}" class="btn-primary text-white px-6 py-3 rounded-full font-semibold inline-flex" data-menu-close>Request Quote</a>
+        <a href="{% url 'contact' %}" class="btn-primary text-white px-6 py-3 rounded-full font-semibold inline-flex" data-menu-close>Contact Us</a>
       </div>
 
       <div class="mt-auto pt-8 border-t border-white/10 text-sm text-slate-300">
-        <p>Call +234 801 234 5678</p>
-        <p>Email uncle@primeshop.com.ng</p>
+        <p>Call +234 803 999 9255</p>
+        <p>Email ndubueze77@yahoo.com</p>
       </div>
     </div>
   </div>
@@ -238,12 +230,13 @@
     {% block content %}{% endblock %}
   </main>
 
+  <!-- Footer repeats the key business details site-wide. -->
   <footer class="bg-slate-950 text-slate-300">
     <div class="container-custom py-16">
       <div class="grid gap-10 md:grid-cols-4">
         <div>
-          <h3 class="text-white text-2xl font-display font-semibold">ND Store Group</h3>
-          <p class="text-sm text-slate-400 mt-3">Nigeria's trusted electrical and building materials partner since 2002. Precision sourcing, verified supply chains, and nationwide delivery.</p>
+          <h3 class="text-white text-2xl font-display font-semibold">Cause of Our Joy Builders</h3>
+          <p class="text-sm text-slate-400 mt-3">Trusted supplier of electrical materials with a strong focus on importation, sales, marketing, and dependable delivery within Abuja and the North Central region of Nigeria.</p>
           <div class="flex gap-3 mt-6">
             <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">FB</div>
             <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">X</div>
@@ -262,30 +255,31 @@
         <div>
           <h4 class="text-white font-semibold mb-4">Core Services</h4>
           <div class="space-y-2 text-sm text-slate-400">
-            <p>Wholesale supply chain</p>
-            <p>Express logistics</p>
-            <p>Project consultancy</p>
-            <p>After-sales support</p>
-            <p>Import coordination</p>
+            <p>Import of electrical materials</p>
+            <p>Wholesale and retail sales</p>
+            <p>Electrical product marketing</p>
+            <p>Bulk supply for projects</p>
+            <p>Delivery within Abuja and North Central</p>
           </div>
         </div>
         <div>
           <h4 class="text-white font-semibold mb-4">Contact</h4>
           <div class="space-y-3 text-sm text-slate-400">
-            <p>22 Ikoyi Road, Abuja, Nigeria</p>
-            <p>+234 801 234 5678</p>
-            <p>uncle@primeshop.com.ng</p>
+            <p>Zone B4, Shop 64, Dei Dei International Building Materials Market, Abuja</p>
+            <p>+234 803 999 9255</p>
+            <p>ndubueze77@yahoo.com</p>
             <p>Mon-Sat: 8am - 6pm</p>
           </div>
         </div>
       </div>
 
-      <div class="border-t border-white/10 mt-12 pt-6 text-sm text-slate-500 text-center">
-        <p>Copyright 2026 ND Store Group. Built with integrity and verified supply chains.</p>
+      <div class="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-center text-sm text-slate-500 md:flex-row md:text-left">
+        <p>Copyright 2026 Cause of Our Joy Builders. Trusted electrical materials supply for Abuja and North Central Nigeria.</p><p class="rounded-full border border-white/10 bg-white/5 px-4 py-2">Made by Ikenna Daniel - 08108221053.</p>
       </div>
     </div>
   </footer>
 
+  <!-- Drawer logic controls the mobile navigation state. -->
   <script>
     const menuButton = document.getElementById('mobileMenuButton');
     const menu = document.getElementById('mobileMenu');
@@ -320,3 +314,14 @@
   {% block extra_js %}{% endblock %}
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+

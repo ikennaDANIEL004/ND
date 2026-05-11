@@ -28,6 +28,7 @@
     };
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/htmx.org@2.0.4" defer></script>
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
@@ -149,6 +150,14 @@
     .fade-up { animation: fadeUp 0.8s ease forwards; }
     .float-soft { animation: floatSoft 7s ease-in-out infinite; }
     .glow-pulse { animation: glowPulse 3s ease-in-out infinite; }
+    .htmx-swapping main {
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 160ms ease, transform 160ms ease;
+    }
+    .modal-open {
+      overflow: hidden;
+    }
   </style>
 
   {% block extra_css %}{% endblock %}
@@ -159,29 +168,32 @@
 
   <!-- Main navigation stays clean and focused, especially on mobile. -->
   <nav class="sticky top-3 z-50 px-3 md:px-0">
-    <div class="container-custom rounded-[1.75rem] glass px-4 py-3 shadow-[0_20px_45px_-30px_rgba(15,23,42,0.4)] md:px-6 md:py-4">
-      <div class="flex flex-wrap items-center justify-between gap-4">
-        <a href="{% url 'home' %}" class="flex min-w-0 items-center gap-3">
-          <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-ink text-white font-display text-sm font-bold shadow-lg shadow-slate-900/20 logo-badge">CO</div>
-          <div>
-            <div class="truncate font-display text-base font-semibold text-ink md:text-lg">Cause of Our Joy Builders</div>
-            <div class="hidden text-xs text-slate-500 md:block">Electrical Materials Import, Sales & Marketing</div>
+    <div class="container-custom">
+      <div class="rounded-3xl glass px-3 py-2.5 shadow-[0_20px_45px_-30px_rgba(15,23,42,0.4)] md:px-5 md:py-3">
+        <div class="flex flex-nowrap items-center justify-between gap-3">
+        <a href="{% url 'home' %}" class="flex min-w-0 flex-1 items-center gap-2.5 md:gap-3" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">
+          <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-ink text-white font-display text-sm font-bold shadow-lg shadow-slate-900/20 logo-badge md:h-11 md:w-11">CO</div>
+          <div class="min-w-0">
+            <div class="truncate font-display text-sm font-semibold text-ink sm:text-base md:text-lg">Cause of Our Joy Builders</div>
+            <div class="hidden text-xs text-slate-500 md:block">Imports, market advisory, trade links, and regional supply</div>
           </div>
         </a>
 
-        <div class="flex items-center gap-4">
+        <div class="flex shrink-0 items-center gap-2 md:gap-4">
           <div class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-700">
-            <a href="{% url 'home' %}" class="hover:text-accent">Home</a>
-            <a href="{% url 'about' %}" class="hover:text-accent">About</a>
-            <a href="{% url 'services' %}" class="hover:text-accent">Services</a>
-            <a href="{% url 'contact' %}" class="hover:text-accent">Contact</a>
+            <a href="{% url 'home' %}" class="hover:text-accent" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Home</a>
+            <a href="{% url 'about' %}" class="hover:text-accent" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">About</a>
+            <a href="{% url 'services' %}" class="hover:text-accent" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Services</a>
+            <a href="{% url 'why_us' %}" class="hover:text-accent" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Why COJB</a>
+            <a href="{% url 'contact' %}" class="hover:text-accent" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Contact</a>
           </div>
-          <a href="{% url 'contact' %}" class="hidden md:inline-flex btn-primary text-white px-5 py-2 rounded-full font-semibold transition">Contact Us</a>
-          <button id="mobileMenuButton" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white/85 text-ink shadow-sm transition hover:border-accent/40 md:hidden" aria-controls="mobileMenu" aria-expanded="false">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <a href="{% url 'contact' %}" class="hidden md:inline-flex btn-primary text-white px-5 py-2 rounded-full font-semibold transition" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Contact Us</a>
+          <button id="mobileMenuButton" class="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-slate-200 bg-white/90 text-ink shadow-sm transition hover:border-accent/40 md:hidden" aria-controls="mobileMenu" aria-expanded="false" aria-label="Open navigation">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
           </button>
+        </div>
         </div>
       </div>
     </div>
@@ -208,30 +220,31 @@
       </div>
 
       <div class="mt-6">
-        <div class="relative">
-          <input type="text" placeholder="Search electrical materials" class="w-full rounded-2xl bg-white/10 border border-white/10 px-4 py-3 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-accent">
+        <form id="mobileSearchForm" class="relative">
+          <input id="mobileSearchInput" type="search" placeholder="Search products or trade services" class="w-full rounded-2xl bg-white/10 border border-white/10 px-4 py-3 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-accent">
           <span class="absolute right-4 top-3 text-slate-400">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M18 11a7 7 0 11-14 0 7 7 0 0114 0z"></path>
             </svg>
           </span>
-        </div>
+        </form>
       </div>
 
       <nav class="mt-8 flex flex-col gap-4 text-lg font-display">
-        <a href="{% url 'home' %}" class="hover:text-accent" data-menu-close>Home</a>
-        <a href="{% url 'about' %}" class="hover:text-accent" data-menu-close>About</a>
-        <a href="{% url 'services' %}" class="hover:text-accent" data-menu-close>Services</a>
-        <a href="{% url 'contact' %}" class="hover:text-accent" data-menu-close>Contact</a>
+        <a href="{% url 'home' %}" class="hover:text-accent" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Home</a>
+        <a href="{% url 'about' %}" class="hover:text-accent" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">About</a>
+        <a href="{% url 'services' %}" class="hover:text-accent" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Services</a>
+        <a href="{% url 'why_us' %}" class="hover:text-accent" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Why COJB</a>
+        <a href="{% url 'contact' %}" class="hover:text-accent" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Contact</a>
       </nav>
 
       <div class="mt-8">
-        <a href="{% url 'contact' %}" class="btn-primary text-white px-6 py-3 rounded-full font-semibold inline-flex" data-menu-close>Contact Us</a>
+        <a href="{% url 'contact' %}" class="btn-primary text-white px-6 py-3 rounded-full font-semibold inline-flex" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Contact Us</a>
       </div>
 
       <div class="mt-auto pt-8 border-t border-white/10 text-sm text-slate-300">
         <p>Call +234 803 999 9255</p>
-        <p>Email ndubueze77@yahoo.com</p>
+        <p>Email info@causeofjoybuilders.com</p>
       </div>
     </div>
   </div>
@@ -240,13 +253,20 @@
     {% block content %}{% endblock %}
   </main>
 
+  <div id="siteModal" class="fixed inset-0 z-[70] hidden items-center justify-center bg-slate-950/60 px-4">
+    <div class="w-full max-w-sm rounded-3xl bg-white p-6 text-center shadow-2xl">
+      <p id="siteModalMessage" class="text-base font-semibold text-slate-800">Thank you. Your message has been received.</p>
+      <button id="siteModalOk" type="button" class="mt-6 inline-flex items-center justify-center rounded-full btn-primary px-7 py-2.5 text-sm font-semibold text-white">OK</button>
+    </div>
+  </div>
+
   <!-- Footer repeats the key business details site-wide. -->
   <footer class="bg-slate-950 text-slate-300">
     <div class="container-custom py-16">
-      <div class="grid gap-10 md:grid-cols-4">
-        <div>
+      <div class="grid gap-10 lg:grid-cols-5">
+        <div class="lg:col-span-2">
           <h3 class="text-white text-2xl font-display font-semibold">Cause of Our Joy Builders</h3>
-          <p class="text-sm text-slate-400 mt-3">Trusted supplier of electrical materials with a strong focus on importation, sales, marketing, and dependable delivery within Abuja and the North Central region of Nigeria.</p>
+          <p class="text-sm text-slate-400 mt-3">A Nigeria-based import, trade advisory, and market access company connecting credible buyers, sellers, investors, and regional partners across Nigeria, Central Africa, and West Africa.</p>
           <div class="flex gap-3 mt-6">
             <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">FB</div>
             <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">X</div>
@@ -259,17 +279,35 @@
             <a href="{% url 'home' %}" class="block hover:text-accent">Home</a>
             <a href="{% url 'about' %}" class="block hover:text-accent">About CEO</a>
             <a href="{% url 'services' %}" class="block hover:text-accent">Services</a>
+            <a href="{% url 'why_us' %}" class="block hover:text-accent">Why Work With Us</a>
             <a href="{% url 'contact' %}" class="block hover:text-accent">Contact</a>
           </div>
         </div>
         <div>
-          <h4 class="text-white font-semibold mb-4">Core Services</h4>
+          <h4 class="text-white font-semibold mb-4">Core Work</h4>
           <div class="space-y-2 text-sm text-slate-400">
-            <p>Import of electrical materials</p>
-            <p>Wholesale and retail sales</p>
-            <p>Electrical product marketing</p>
-            <p>Bulk supply for projects</p>
-            <p>Delivery within Abuja and North Central</p>
+            <p>Market entry advisory</p>
+            <p>Import and product marketing</p>
+            <p>Trade opportunity matching</p>
+            <p>Gold, wolframite, ginger, palm oil, and palm kernel oil</p>
+            <p>Central and West African representation</p>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-4">Partners</h4>
+          <div class="space-y-3 text-sm text-slate-400">
+            <a href="#" class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-3 hover:border-accent/40">
+              <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-xs font-bold text-white">Logo</span>
+              <span><span class="block text-white">Fikami Farms Cameroon</span><span>Producer of palm oil</span></span>
+            </a>
+            <a href="#" class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-3 hover:border-accent/40">
+              <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-xs font-bold text-white">Logo</span>
+              <span><span class="block text-white">Fondom Cameroon</span><span>Wines and spirits importers</span></span>
+            </a>
+            <a href="#" class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-3 hover:border-accent/40">
+              <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-xs font-bold text-white">Logo</span>
+              <span><span class="block text-white">ETS Silas Cameroon</span><span>Textile importers</span></span>
+            </a>
           </div>
         </div>
         <div>
@@ -277,14 +315,14 @@
           <div class="space-y-3 text-sm text-slate-400">
             <p>Zone B4, Shop 64, Dei Dei International Building Materials Market, Abuja</p>
             <p>+234 803 999 9255</p>
-            <p>ndubueze77@yahoo.com</p>
+            <a href="{% url 'why_us' %}" class="block text-accent hover:text-white">info@causeofjoybuilders.com</a>
             <p>Mon-Sat: 8am - 6pm</p>
           </div>
         </div>
       </div>
 
       <div class="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-center text-sm text-slate-500 md:flex-row md:text-left">
-        <p>Copyright 2026 Cause of Our Joy Builders. Trusted electrical materials supply for Abuja and North Central Nigeria.</p><p class="rounded-full border border-white/10 bg-white/5 px-4 py-2">Made by Ikenna Daniel - 08108221053.</p>
+        <p>Copyright 2026 Cause of Our Joy Builders. Market access, trade facilitation, imports, and regional representation for Nigeria, Central Africa, and West Africa.</p><p class="rounded-full border border-white/10 bg-white/5 px-4 py-2">Made by Ikenna Daniel - 08108221053.</p>
       </div>
     </div>
   </footer>

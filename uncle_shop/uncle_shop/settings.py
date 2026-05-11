@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-m4h7%$5+muyy3ee&3$6p0iv#q*8!x=yzo8o)gfrpisnh2tk1%@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 import os
 
@@ -135,9 +135,23 @@ CSRF_TRUSTED_ORIGINS = [
     "https://nd-production-42eb.up.railway.app",
 ]
 ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "localhost",
     "causeofjoybuilders.com",
     "www.causeofjoybuilders.com",
     "nd-production-42eb.up.railway.app",
 ]
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
+
+EMAIL_BACKEND = os.getenv(
+    "EMAIL_BACKEND",
+    "django.core.mail.backends.smtp.EmailBackend",
+)
+EMAIL_HOST = os.getenv("EMAIL_HOST", "smtp.mail.yahoo.com")
+EMAIL_PORT = int(os.getenv("EMAIL_PORT", "587"))
+EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS", "True") == "True"
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", "")
+DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", "info@causeofjoybuilders.com")
+EMAIL_TIMEOUT = int(os.getenv("EMAIL_TIMEOUT", "10"))

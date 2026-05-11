@@ -1,0 +1,84 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}Why Work With Cause of Our Joy Builders{% endblock %}
+
+{% block content %}
+<section class="relative overflow-hidden">
+  <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=80')] bg-cover bg-center"></div>
+  <div class="absolute inset-0 bg-gradient-to-br from-slate-950/95 via-slate-900/85 to-slate-950/90"></div>
+  <div class="container-custom relative z-10 py-20 text-white">
+    <p class="text-xs uppercase tracking-[0.3em] text-slate-300">Why work with us</p>
+    <h1 class="mt-4 text-4xl md:text-6xl font-display font-semibold">Do business where intelligence, access, and trust meet.</h1>
+    <p class="mt-4 max-w-2xl text-lg text-slate-200">Cause of Our Joy Builders helps customers move beyond guesswork by combining local market knowledge, regional relationships, and practical trade experience.</p>
+  </div>
+</section>
+
+<section class="py-20 bg-white">
+  <div class="container-custom">
+    <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] items-center">
+      <div>
+        <p class="text-xs uppercase tracking-[0.3em] text-slate-500">The business case</p>
+        <h2 class="mt-3 text-3xl md:text-5xl font-display font-semibold">Africa's next commercial advantage belongs to informed operators.</h2>
+        <p class="mt-4 text-slate-600">Nigeria and the Central and West African markets offer scale, resources, demand, and regional movement. They also require local understanding. We help investors and trading companies identify where opportunity is real, where risk is hidden, and where the right partner can change the outcome.</p>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div class="rounded-2xl border border-slate-200 p-5">
+          <p class="text-3xl font-display font-semibold text-accent">230M+</p>
+          <p class="mt-2 text-sm text-slate-500">Nigeria's large population creates demand across consumer, industrial, and agricultural categories.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 p-5">
+          <p class="text-3xl font-display font-semibold text-accent">60%+</p>
+          <p class="mt-2 text-sm text-slate-500">A young population supports long-term consumption, distribution, and workforce potential.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 p-5">
+          <p class="text-3xl font-display font-semibold text-accent">15</p>
+          <p class="mt-2 text-sm text-slate-500">ECOWAS markets create a wider West African commercial corridor for serious operators.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 p-5">
+          <p class="text-3xl font-display font-semibold text-accent">5</p>
+          <p class="mt-2 text-sm text-slate-500">Priority product categories: gold, wolframite ore, ginger, palm oil, and palm kernel oil.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 bg-slate-50">
+  <div class="container-custom">
+    <div class="mb-10 max-w-3xl">
+      <p class="text-xs uppercase tracking-[0.3em] text-slate-500">What makes our products attractive</p>
+      <h2 class="mt-3 text-3xl md:text-5xl font-display font-semibold">Resource-backed products with practical market demand</h2>
+    </div>
+    <div class="grid gap-6 md:grid-cols-3">
+      <div class="card-neo rounded-2xl p-6">
+        <h3 class="font-display text-xl font-semibold">Mineral value</h3>
+        <p class="mt-3 text-sm text-slate-500">Gold and wolframite ore are high-interest categories for buyers who need credible sourcing conversations and disciplined transaction handling.</p>
+      </div>
+      <div class="card-neo rounded-2xl p-6">
+        <h3 class="font-display text-xl font-semibold">Agricultural strength</h3>
+        <p class="mt-3 text-sm text-slate-500">Ginger and palm products connect buyers to agricultural categories with established regional production and international demand.</p>
+      </div>
+      <div class="card-neo rounded-2xl p-6">
+        <h3 class="font-display text-xl font-semibold">Transaction confidence</h3>
+        <p class="mt-3 text-sm text-slate-500">Our role as a commercial bridge helps buyers and sellers align on quality, expectations, communication, and next steps.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 bg-slate-950 text-white">
+  <div class="container-custom">
+    <div class="grid gap-10 lg:grid-cols-2 items-center">
+      <div class="overflow-hidden rounded-3xl">
+        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1400&q=80" alt="Business partners reviewing trade opportunities" class="h-96 w-full object-cover">
+      </div>
+      <div>
+        <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Our promise</p>
+        <h2 class="mt-3 text-3xl md:text-5xl font-display font-semibold">We help customers choose wisely before they spend heavily.</h2>
+        <p class="mt-4 text-slate-300">We do not simply introduce names. We help clients think through market fit, partner quality, product movement, buyer readiness, and practical commercial structure. That is the difference between entering a market and entering it intelligently.</p>
+        <a href="{% url 'contact' %}" class="mt-8 inline-flex items-center justify-center rounded-full btn-primary px-8 py-3 font-semibold text-white transition" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Begin the Conversation</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

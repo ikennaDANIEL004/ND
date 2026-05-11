@@ -1,207 +1,203 @@
 {% extends 'shop/base.html' %}
 {% load static %}
 
-{% block title %}Home - Cause of Our Joy Builders | Electrical Materials Supplier{% endblock %}
+{% block title %}Cause of Our Joy Builders | Market Advice, Trade Imports & Regional Supply{% endblock %}
 
 {% block content %}
-<!-- Hero section introduces the company value proposition. -->
 <section class="relative overflow-hidden">
-  <div class="absolute inset-0 bg-[url('https://images.pexels.com/photos/24486690/pexels-photo-24486690.jpeg?cs=srgb&dl=pexels-italo-crespi-177113476-24486690.jpg&fm=jpg')] bg-cover bg-center"></div>
-  <div class="absolute inset-0 bg-gradient-to-br from-slate-950/95 via-slate-900/85 to-slate-950/90"></div>
+  <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1800&q=80')] bg-cover bg-center"></div>
+  <div class="absolute inset-0 bg-gradient-to-br from-slate-950/95 via-slate-900/85 to-slate-950/88"></div>
   <div class="absolute inset-0 bg-grid opacity-20"></div>
 
   <div class="container-custom relative z-10 py-24 md:py-32">
-    <div class="grid gap-12 lg:grid-cols-2 items-center">
+    <div class="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] items-center">
       <div class="text-white fade-up">
-        <span class="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-xs uppercase tracking-[0.3em] text-slate-300">Trusted electrical materials merchant</span>
+        <span class="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-xs uppercase tracking-[0.3em] text-slate-300">Nigeria, Central Africa, West Africa</span>
         <h1 class="mt-6 text-4xl md:text-6xl font-display font-semibold leading-tight">
           Cause of Our Joy Builders
-          <span class="block text-gradient">electrical materials for homes, shops, and projects</span>
+          <span class="block text-gradient">market intelligence, trade access, and trusted supply.</span>
         </h1>
-        <p class="mt-6 text-lg text-slate-200 max-w-xl">We specialize in the import, sale, and marketing of electrical materials, serving customers across Abuja and the North Central region of Nigeria with dependable supply and prompt delivery.</p>
+        <p class="mt-6 max-w-2xl text-lg text-slate-200">We advise investors entering Nigeria and the Central and West African markets, represent foreign brands, connect verified buyers with local sellers, and facilitate trade in minerals, agricultural produce, oils, and import-ready consumer categories.</p>
         <div class="mt-8 flex flex-wrap gap-4">
-          <a href="#products" class="btn-primary px-8 py-3 rounded-full text-white font-semibold transition">View Materials</a>
-          <a href="{% url 'contact' %}" class="px-8 py-3 rounded-full border border-white/40 text-white font-semibold hover:bg-white/10 transition">Call for Supply</a>
+          <a href="{% url 'services' %}" class="btn-primary px-8 py-3 rounded-full text-white font-semibold transition" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Explore Services</a>
+          <a href="{% url 'contact' %}" class="px-8 py-3 rounded-full border border-white/40 text-white font-semibold hover:bg-white/10 transition" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Start a Trade Conversation</a>
         </div>
-        <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
+        <div class="mt-10 grid grid-cols-2 gap-5 text-sm md:grid-cols-4">
           <div>
             <div class="text-2xl font-display font-semibold">20+</div>
-            <div class="text-slate-300">Years in sales and marketing</div>
+            <div class="text-slate-300">Years in sales and market development</div>
           </div>
           <div>
-            <div class="text-2xl font-display font-semibold">Abuja</div>
-            <div class="text-slate-300">Core delivery base</div>
+            <div class="text-2xl font-display font-semibold">3</div>
+            <div class="text-slate-300">Regional market corridors</div>
           </div>
           <div>
-            <div class="text-2xl font-display font-semibold">North Central</div>
-            <div class="text-slate-300">Regional coverage</div>
+            <div class="text-2xl font-display font-semibold">5</div>
+            <div class="text-slate-300">Priority export-ready products</div>
           </div>
           <div>
             <div class="text-2xl font-display font-semibold">B4-64</div>
-            <div class="text-slate-300">Dei Dei market location</div>
+            <div class="text-slate-300">Abuja business base</div>
           </div>
         </div>
       </div>
 
       <div class="relative">
-        <div class="glass-dark rounded-3xl p-6 shadow-2xl">
+        <div class="glass-dark rounded-3xl p-5 shadow-2xl">
           <div class="grid gap-4">
-            <div class="rounded-2xl overflow-hidden">
-              <img src="https://images.pexels.com/photos/11666903/pexels-photo-11666903.jpeg?cs=srgb&dl=pexels-matreding-11666903.jpg&fm=jpg" alt="Electrical materials market supply" class="w-full h-64 object-cover">
+            <div class="overflow-hidden rounded-2xl">
+              <img src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?auto=format&fit=crop&w=1400&q=80" alt="International trade logistics" class="h-72 w-full object-cover">
             </div>
             <div class="grid grid-cols-2 gap-4">
               <div class="rounded-2xl bg-white/10 p-4">
-                <p class="text-xs uppercase tracking-[0.2em] text-slate-300">Supply focus</p>
-                <p class="text-2xl font-display font-semibold text-white mt-2">Import</p>
-                <p class="text-sm text-slate-300">Quality electrical materials</p>
+                <p class="text-xs uppercase tracking-[0.2em] text-slate-300">Market advice</p>
+                <p class="mt-2 text-2xl font-display font-semibold text-white">Clarity</p>
+                <p class="text-sm text-slate-300">Better entry decisions before capital is committed.</p>
               </div>
               <div class="rounded-2xl bg-white/10 p-4">
-                <p class="text-xs uppercase tracking-[0.2em] text-slate-300">Delivery zone</p>
-                <p class="text-2xl font-display font-semibold text-white mt-2">Fast</p>
-                <p class="text-sm text-slate-300">Abuja and North Central</p>
+                <p class="text-xs uppercase tracking-[0.2em] text-slate-300">Trade role</p>
+                <p class="mt-2 text-2xl font-display font-semibold text-white">Bridge</p>
+                <p class="text-sm text-slate-300">Foreign buyers, local sellers, and reliable partners.</p>
               </div>
             </div>
           </div>
         </div>
-        <div class="absolute -bottom-6 -left-6 hidden md:block bg-white/15 rounded-2xl p-4 text-white text-sm float-soft">
-          <p class="uppercase tracking-[0.2em] text-[11px] text-slate-300">COJB</p>
-          <p class="font-display text-lg">Trusted market supplier</p>
+        <div class="absolute -bottom-6 right-6 hidden rounded-2xl bg-white px-5 py-4 shadow-xl md:block">
+          <p class="text-xs uppercase tracking-[0.3em] text-slate-500">2026 focus</p>
+          <p class="text-xl font-display font-semibold">Smarter African trade</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Service pillars explain the three main business strengths. -->
 <section class="py-16 bg-white">
   <div class="container-custom">
     <div class="grid gap-6 md:grid-cols-3">
       <div class="card-neo rounded-2xl p-6">
-        <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Importation</p>
-        <h3 class="mt-3 text-xl font-display font-semibold">Reliable sourcing of electrical materials</h3>
-        <p class="mt-3 text-sm text-slate-500">We import trusted electrical products and make them available to contractors, traders, and end users.</p>
+        <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Market advice</p>
+        <h3 class="mt-3 text-xl font-display font-semibold">Enter the right market with the right information</h3>
+        <p class="mt-3 text-sm text-slate-500">We help companies and investors evaluate demand, local realities, trade routes, representation options, and risk before they enter Nigeria, Central Africa, or West Africa.</p>
       </div>
       <div class="card-neo rounded-2xl p-6">
-        <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Sales</p>
-        <h3 class="mt-3 text-xl font-display font-semibold">Wholesale and retail supply</h3>
-        <p class="mt-3 text-sm text-slate-500">From market traders to project buyers, we support both bulk and everyday electrical material needs.</p>
+        <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Trade opportunities</p>
+        <h3 class="mt-3 text-xl font-display font-semibold">Connect buyers, sellers, and partners with confidence</h3>
+        <p class="mt-3 text-sm text-slate-500">We link international buyers to local sellers, support product verification, and umpire transactions so quality, expectation, and delivery stay aligned.</p>
       </div>
       <div class="card-neo rounded-2xl p-6">
-        <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Marketing</p>
-        <h3 class="mt-3 text-xl font-display font-semibold">Product awareness and market reach</h3>
-        <p class="mt-3 text-sm text-slate-500">We help move trusted electrical materials into the hands of the right buyers across our service region.</p>
+        <p class="text-xs uppercase tracking-[0.2em] text-slate-400">Representation</p>
+        <h3 class="mt-3 text-xl font-display font-semibold">A practical route into regional distribution</h3>
+        <p class="mt-3 text-sm text-slate-500">Foreign companies can work with us to introduce products, identify representatives, build trading relationships, and reach credible local channels.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Product grid highlights the electrical categories customers buy most. -->
-<section id="products" class="py-20 bg-slate-50">
-  <div class="container-custom">
-    <div class="flex flex-wrap items-end justify-between gap-4 mb-10">
-      <div>
-        <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Electrical materials</p>
-        <h2 class="text-3xl md:text-5xl font-display font-semibold">Products our customers ask for every day</h2>
-      </div>
-      <a href="{% url 'contact' %}" class="text-sm font-semibold text-accent hover:text-ink">Contact for prices</a>
-    </div>
-
-    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      <div class="card-neo rounded-2xl overflow-hidden">
-        <img src="https://cdn.pixabay.com/photo/2021/08/29/03/37/electricity-6582300_1280.jpg" alt="Electrical cables" class="h-56 w-full object-cover">
-        <div class="p-6">
-          <h3 class="text-xl font-display font-semibold">Electrical Cables</h3>
-          <p class="text-sm text-slate-500 mt-2">Strong and reliable cable options for residential, commercial, and industrial jobs.</p>
-          <a href="{% url 'contact' %}" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent">Get quote</a>
-        </div>
-      </div>
-
-      <div class="card-neo rounded-2xl overflow-hidden">
-        <img src="https://images.pexels.com/photos/29519165/pexels-photo-29519165.jpeg?cs=srgb&dl=pexels-arthur-uzoagba-3061628-29519165.jpg&fm=jpg" alt="Switches and sockets" class="h-56 w-full object-cover">
-        <div class="p-6">
-          <h3 class="text-xl font-display font-semibold">Switches and Sockets</h3>
-          <p class="text-sm text-slate-500 mt-2">Durable fittings for homes, offices, and project installations.</p>
-          <a href="{% url 'contact' %}" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent">Get quote</a>
-        </div>
-      </div>
-
-      <div class="card-neo rounded-2xl overflow-hidden">
-        <img src="https://cdn.pixabay.com/photo/2016/06/17/01/17/diesel-generators-1462424_1280.png" alt="Circuit breakers" class="h-56 w-full object-cover">
-        <div class="p-6">
-          <h3 class="text-xl font-display font-semibold">Circuit Breakers</h3>
-          <p class="text-sm text-slate-500 mt-2">Protection devices and accessories for safe and efficient electrical setups.</p>
-          <a href="{% url 'contact' %}" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent">Get quote</a>
-        </div>
-      </div>
-
-      <div class="card-neo rounded-2xl overflow-hidden">
-        <img src="https://images.pexels.com/photos/5691611/pexels-photo-5691611.jpeg?cs=srgb&dl=pexels-kseniachernaya-5691611.jpg&fm=jpg" alt="Lighting materials" class="h-56 w-full object-cover">
-        <div class="p-6">
-          <h3 class="text-xl font-display font-semibold">Lighting Materials</h3>
-          <p class="text-sm text-slate-500 mt-2">Bulbs, fittings, and lighting accessories for shops, homes, and larger projects.</p>
-          <a href="{% url 'contact' %}" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent">Get quote</a>
-        </div>
-      </div>
-
-      <div class="card-neo rounded-2xl overflow-hidden">
-        <img src="https://images.pexels.com/photos/9875418/pexels-photo-9875418.jpeg?cs=srgb&dl=pexels-kindelmedia-9875418.jpg&fm=jpg" alt="Electrical accessories" class="h-56 w-full object-cover">
-        <div class="p-6">
-          <h3 class="text-xl font-display font-semibold">Electrical Accessories</h3>
-          <p class="text-sm text-slate-500 mt-2">Conduits, connectors, tapes, fittings, and other essentials for smooth installations.</p>
-          <a href="{% url 'contact' %}" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent">Get quote</a>
-        </div>
-      </div>
-
-      <div class="card-neo rounded-2xl overflow-hidden">
-        <img src="https://images.pexels.com/photos/15562154/pexels-photo-15562154.jpeg?cs=srgb&dl=pexels-tom-van-dyck-423949093-15562154.jpg&fm=jpg" alt="Bulk project electrical supply" class="h-56 w-full object-cover">
-        <div class="p-6">
-          <h3 class="text-xl font-display font-semibold">Bulk Project Supply</h3>
-          <p class="text-sm text-slate-500 mt-2">Steady supply support for contractors, electrical dealers, and construction projects.</p>
-          <a href="{% url 'contact' %}" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent">Get quote</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Delivery section reinforces the service coverage and logistics promise. -->
-<section class="py-20 bg-white">
+<section class="py-20 bg-slate-50">
   <div class="container-custom">
     <div class="grid gap-10 lg:grid-cols-2 items-center">
       <div>
-        <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Delivery promise</p>
-        <h2 class="text-3xl md:text-5xl font-display font-semibold mt-3">We deliver where our customers need us most</h2>
-        <p class="mt-4 text-slate-500">Cause of Our Joy Builders serves customers within Abuja and the North Central region with practical, timely delivery for business and project needs.</p>
-        <div class="mt-6 grid gap-4 md:grid-cols-2">
-          <div class="rounded-2xl border border-slate-200 p-4">
-            <p class="text-sm font-semibold">Abuja coverage</p>
-            <p class="text-xs text-slate-500 mt-2">Fast supply and delivery for traders, installers, and project buyers within the FCT.</p>
+        <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Why our regions matter</p>
+        <h2 class="mt-3 text-3xl md:text-5xl font-display font-semibold">A young, resource-rich, fast-moving market corridor</h2>
+        <p class="mt-4 text-slate-600">Nigeria is Africa's largest population center and one of its most important commercial gateways. Central and West Africa combine strong agricultural output, mineral resources, expanding urban consumption, and rising demand for credible import partners. That combination creates opportunity, but only for businesses that move with grounded local intelligence.</p>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+          <div class="rounded-2xl border border-slate-200 bg-white p-5">
+            <p class="text-2xl font-display font-semibold text-accent">230M+</p>
+            <p class="mt-1 text-sm text-slate-500">Nigeria's population base creates deep consumer and industrial demand.</p>
           </div>
-          <div class="rounded-2xl border border-slate-200 p-4">
-            <p class="text-sm font-semibold">North Central delivery</p>
-            <p class="text-xs text-slate-500 mt-2">Dependable regional supply support for customers outside Abuja but within North Central Nigeria.</p>
+          <div class="rounded-2xl border border-slate-200 bg-white p-5">
+            <p class="text-2xl font-display font-semibold text-accent">ECOWAS</p>
+            <p class="mt-1 text-sm text-slate-500">Regional trade frameworks support cross-border commercial movement.</p>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-white p-5">
+            <p class="text-2xl font-display font-semibold text-accent">Resources</p>
+            <p class="mt-1 text-sm text-slate-500">Minerals, agricultural produce, palm products, and specialty commodities.</p>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-white p-5">
+            <p class="text-2xl font-display font-semibold text-accent">Access</p>
+            <p class="mt-1 text-sm text-slate-500">Local relationships reduce uncertainty for foreign buyers and investors.</p>
           </div>
         </div>
       </div>
-      <div class="relative">
-        <div class="rounded-3xl overflow-hidden shadow-2xl">
-          <img src="https://images.pexels.com/photos/11666903/pexels-photo-11666903.jpeg?cs=srgb&dl=pexels-matreding-11666903.jpg&fm=jpg" alt="Warehouse logistics" class="w-full h-96 object-cover">
+      <div class="overflow-hidden rounded-3xl shadow-2xl">
+        <img src="https://images.unsplash.com/photo-1532634896-26909d0d4b80?auto=format&fit=crop&w=1400&q=80" alt="African market trading activity" class="h-[520px] w-full object-cover">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="products" class="py-20 bg-white">
+  <div class="container-custom">
+    <div class="mb-10 flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Products available for sale</p>
+        <h2 class="text-3xl md:text-5xl font-display font-semibold">Verified categories for serious buyers</h2>
+      </div>
+      <a href="{% url 'contact' %}" class="text-sm font-semibold text-accent hover:text-ink" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Request availability</a>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-5">
+      <div class="card-neo overflow-hidden rounded-2xl">
+        <img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&w=900&q=80" alt="Gold product trade" class="h-48 w-full object-cover">
+        <div class="p-5"><h3 class="font-display text-xl font-semibold">Gold</h3><p class="mt-2 text-sm text-slate-500">High-value mineral opportunities handled with careful buyer-seller alignment.</p></div>
+      </div>
+      <div class="card-neo overflow-hidden rounded-2xl">
+        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=crop&w=900&q=80" alt="Wolframite ore mineral trade" class="h-48 w-full object-cover">
+        <div class="p-5"><h3 class="font-display text-xl font-semibold">Wolframite Ore</h3><p class="mt-2 text-sm text-slate-500">Mineral sourcing opportunities for buyers that require disciplined local access.</p></div>
+      </div>
+      <div class="card-neo overflow-hidden rounded-2xl">
+        <img src="https://images.unsplash.com/photo-1603431776524-cbc30c71f71d?auto=format&fit=crop&w=900&q=80" alt="Fresh ginger agricultural produce" class="h-48 w-full object-cover">
+        <div class="p-5"><h3 class="font-display text-xl font-semibold">Ginger</h3><p class="mt-2 text-sm text-slate-500">Agricultural produce for international buyers seeking quality supply channels.</p></div>
+      </div>
+      <div class="card-neo overflow-hidden rounded-2xl">
+        <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=900&q=80" alt="Palm oil product" class="h-48 w-full object-cover">
+        <div class="p-5"><h3 class="font-display text-xl font-semibold">Palm Oil</h3><p class="mt-2 text-sm text-slate-500">Regional palm oil trading opportunities through trusted partner networks.</p></div>
+      </div>
+      <div class="card-neo overflow-hidden rounded-2xl">
+        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=80" alt="Palm kernel oil supply" class="h-48 w-full object-cover">
+        <div class="p-5"><h3 class="font-display text-xl font-semibold">Palm Kernel Oil</h3><p class="mt-2 text-sm text-slate-500">Commodity access for buyers looking for reliable palm derivative supply.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 bg-slate-950 text-white">
+  <div class="container-custom">
+    <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] items-center">
+      <div>
+        <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Partners</p>
+        <h2 class="mt-3 text-3xl md:text-5xl font-display font-semibold">A network built for real trade movement</h2>
+        <p class="mt-4 text-slate-300">Our partner relationships give clients access to producers, importers, and product channels across Cameroon and the wider region. Each partnership area has space for a website link and logo so the brand can grow into a stronger public trust signal.</p>
+      </div>
+      <div class="grid gap-4 md:grid-cols-3">
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+          <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-sm font-semibold">Logo</div>
+          <h3 class="mt-5 font-display text-xl font-semibold">Fikami Farms Cameroon</h3>
+          <p class="mt-2 text-sm text-slate-300">Producer of palm oil.</p>
+          <a href="#" class="mt-4 inline-flex text-sm font-semibold text-accent">Partner website</a>
         </div>
-        <div class="absolute -bottom-6 right-6 bg-white rounded-2xl px-5 py-4 shadow-xl">
-          <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Service area</p>
-          <p class="text-2xl font-display font-semibold mt-1">Abuja + North Central</p>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+          <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-sm font-semibold">Logo</div>
+          <h3 class="mt-5 font-display text-xl font-semibold">Fondom Cameroon</h3>
+          <p class="mt-2 text-sm text-slate-300">Wines and spirits importers.</p>
+          <a href="#" class="mt-4 inline-flex text-sm font-semibold text-accent">Partner website</a>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+          <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-sm font-semibold">Logo</div>
+          <h3 class="mt-5 font-display text-xl font-semibold">ETS Silas Cameroon</h3>
+          <p class="mt-2 text-sm text-slate-300">Textile importers.</p>
+          <a href="#" class="mt-4 inline-flex text-sm font-semibold text-accent">Partner website</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Final call to action directs visitors to contact the company. -->
-<section class="py-20 bg-slate-950 text-white">
+<section class="py-20 bg-white">
   <div class="container-custom text-center">
-    <h2 class="text-3xl md:text-5xl font-display font-semibold">Need electrical materials for your next job?</h2>
-    <p class="mt-4 text-slate-300 max-w-2xl mx-auto">Speak with our team for trusted supply, honest service, and delivery support within our coverage area.</p>
-    <a href="{% url 'contact' %}" class="mt-8 inline-flex items-center justify-center px-8 py-3 rounded-full btn-primary text-white font-semibold transition">Reach COJB</a>
+    <h2 class="mx-auto max-w-3xl text-3xl md:text-5xl font-display font-semibold">Do business with people who understand the market before the transaction begins.</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-slate-600">Whether you are entering Nigeria, sourcing local commodities, introducing a foreign product, or seeking credible trading partners, Cause of Our Joy Builders brings practical market knowledge, local contact, and disciplined commercial support.</p>
+    <a href="{% url 'contact' %}" class="mt-8 inline-flex items-center justify-center rounded-full btn-primary px-8 py-3 font-semibold text-white transition" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Contact COJB</a>
   </div>
 </section>
 {% endblock %}

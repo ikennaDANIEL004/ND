@@ -21,3 +21,8 @@ urlpatterns = [
     path('ND-ID-project-backend/', admin.site.urls),
     path('',include('shop.urls')),
 ]
+
+
+
+
+#ID

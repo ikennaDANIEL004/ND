@@ -129,12 +129,14 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 CSRF_TRUSTED_ORIGINS = [
+    "https://causeofjoybuilders.com",
+    "https://www.causeofjoybuilders.com",
     "https://nd-production-42eb.up.railway.app",
 ]
 ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'localhost',
-    'nd-production-42eb.up.railway.app',
+    "causeofjoybuilders.com",
+    "www.causeofjoybuilders.com",
+    "nd-production-42eb.up.railway.app",
 ]
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True

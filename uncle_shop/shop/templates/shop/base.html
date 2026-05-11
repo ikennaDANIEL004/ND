@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -117,6 +118,15 @@
       transform: translateY(-8px);
       box-shadow: 0 30px 50px -30px rgba(2, 6, 23, 0.35);
     }
+    .logo-badge {
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    nav.nav--contrast .logo-badge {
+      background: #ffffff;
+      color: var(--ink);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      box-shadow: 0 10px 24px -18px rgba(15, 23, 42, 0.24);
+    }
     .btn-primary {
       background: linear-gradient(135deg, #0ea5e9 0%, #14b8a6 100%);
       box-shadow: 0 16px 30px -18px rgba(14, 165, 233, 0.7);
@@ -152,7 +162,7 @@
     <div class="container-custom rounded-[1.75rem] glass px-4 py-3 shadow-[0_20px_45px_-30px_rgba(15,23,42,0.4)] md:px-6 md:py-4">
       <div class="flex flex-wrap items-center justify-between gap-4">
         <a href="{% url 'home' %}" class="flex min-w-0 items-center gap-3">
-          <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-ink text-white font-display text-sm font-bold shadow-lg shadow-slate-900/20">CO</div>
+          <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-ink text-white font-display text-sm font-bold shadow-lg shadow-slate-900/20 logo-badge">CO</div>
           <div>
             <div class="truncate font-display text-base font-semibold text-ink md:text-lg">Cause of Our Joy Builders</div>
             <div class="hidden text-xs text-slate-500 md:block">Electrical Materials Import, Sales & Marketing</div>
@@ -279,39 +289,8 @@
     </div>
   </footer>
 
-  <!-- Drawer logic controls the mobile navigation state. -->
-  <script>
-    const menuButton = document.getElementById('mobileMenuButton');
-    const menu = document.getElementById('mobileMenu');
-    const backdrop = document.getElementById('mobileMenuBackdrop');
-    const closeButtons = document.querySelectorAll('[data-menu-close]');
-
-    const openMenu = () => {
-      menu.classList.remove('translate-x-full');
-      backdrop.classList.remove('opacity-0', 'pointer-events-none');
-      menuButton.setAttribute('aria-expanded', 'true');
-      document.body.classList.add('overflow-hidden');
-    };
-
-    const closeMenu = () => {
-      menu.classList.add('translate-x-full');
-      backdrop.classList.add('opacity-0', 'pointer-events-none');
-      menuButton.setAttribute('aria-expanded', 'false');
-      document.body.classList.remove('overflow-hidden');
-    };
-
-    menuButton.addEventListener('click', openMenu);
-    backdrop.addEventListener('click', closeMenu);
-    closeButtons.forEach((button) => button.addEventListener('click', closeMenu));
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') {
-        closeMenu();
-      }
-    });
-  </script>
-
   {% block extra_js %}{% endblock %}
+  <script src="{% static 'shop/nav-contrast.js' %}" defer></script>
 </body>
 </html>
 

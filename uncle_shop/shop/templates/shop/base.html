@@ -8,7 +8,8 @@
 
   <!-- Drawer logic controls the mobile navigation state. -->
   <script>
-    tailwind.config = {
+    window.tailwind = window.tailwind || {};
+    window.tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
@@ -212,9 +213,9 @@
   </nav>
 
   <!-- Backdrop handles focus for the mobile drawer. -->
-  <div id="mobileMenuBackdrop" class="fixed inset-0 bg-slate-950/40 opacity-0 pointer-events-none transition duration-300 z-40"></div>
+  <div id="mobileMenuBackdrop" class="fixed inset-0 bg-slate-950/40 opacity-0 pointer-events-none transition duration-300 z-[55]" aria-hidden="true"></div>
   <!-- Mobile navigation presents quick links and contact details in one place. -->
-  <div id="mobileMenu" class="fixed top-0 right-0 h-full w-full max-w-sm translate-x-full transition duration-300 z-50">
+  <div id="mobileMenu" class="fixed top-0 right-0 h-full w-full max-w-sm translate-x-full transition duration-300 z-[60]" aria-hidden="true">
     <div class="glass-dark h-full p-6 flex flex-col text-white">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-3">

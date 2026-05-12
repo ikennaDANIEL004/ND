@@ -46,6 +46,9 @@
       menu.classList.remove('translate-x-full');
       backdrop.classList.remove('opacity-0', 'pointer-events-none');
       menuButton.setAttribute('aria-expanded', 'true');
+      menuButton.setAttribute('aria-label', 'Close navigation');
+      menu.setAttribute('aria-hidden', 'false');
+      backdrop.setAttribute('aria-hidden', 'false');
       document.body.classList.add('overflow-hidden');
     };
 
@@ -56,10 +59,19 @@
       menu.classList.add('translate-x-full');
       backdrop.classList.add('opacity-0', 'pointer-events-none');
       menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.setAttribute('aria-label', 'Open navigation');
+      menu.setAttribute('aria-hidden', 'true');
+      backdrop.setAttribute('aria-hidden', 'true');
       document.body.classList.remove('overflow-hidden');
     };
 
-    bindOnce(menuButton, 'click', openMenu, 'menuOpenBound');
+    bindOnce(menuButton, 'click', () => {
+      if (menuButton.getAttribute('aria-expanded') === 'true') {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    }, 'menuToggleBound');
     bindOnce(backdrop, 'click', closeMenu, 'menuBackdropBound');
     closeButtons.forEach((button) => bindOnce(button, 'click', closeMenu, 'menuCloseBound'));
 

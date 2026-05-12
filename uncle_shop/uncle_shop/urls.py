@@ -26,7 +26,7 @@ sitemaps = {
 urlpatterns = [
     path('ND-ID-project-backend/', admin.site.urls),
     path('',include('shop.urls')),
-]
+] # passkey= username=causeofjoybuilders,password=1234567890abc
 
 path(
     'sitemap.xml',

@@ -1,8 +1,13 @@
+import logging
+
 from django.conf import settings
+from django.contrib import messages
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
+
 from .models import Product, Service, ContactSubmission
-from django.contrib import messages
+
+logger = logging.getLogger(__name__)
 
 def home(request):
     products = Product.objects.all()
@@ -18,12 +23,17 @@ def services(request):
 
 def contact(request):
     if request.method == 'POST':
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        phone = request.POST.get('phone')
-        message = request.POST.get('message')
+        name = request.POST.get('name', '').strip()
+        email = request.POST.get('email', '').strip()
+        phone = request.POST.get('phone', '').strip()
+        message = request.POST.get('message', '').strip()
 
-        ContactSubmission.objects.create(name=name, email=email, phone=phone, message=message)
+        submission = ContactSubmission.objects.create(
+            name=name,
+            email=email,
+            phone=phone,
+            message=message,
+        )
         subject = f"New website enquiry from {name}"
         body = (
             f"Name: {name}\n"
@@ -31,13 +41,20 @@ def contact(request):
             f"Phone: {phone}\n\n"
             f"Message:\n{message}"
         )
-        send_mail(
-            subject,
-            body,
-            getattr(settings, 'DEFAULT_FROM_EMAIL', 'info@causeofjoybuilders.com'),
-            ['ndubueze77@yahoo.com'],
-            fail_silently=True,
-        )
+        recipient = getattr(settings, 'CONTACT_NOTIFICATION_EMAIL', 'ndubueze77@yahoo.com')
+        try:
+            send_mail(
+                subject,
+                body,
+                getattr(settings, 'DEFAULT_FROM_EMAIL', 'info@causeofjoybuilders.com'),
+                [recipient],
+                fail_silently=False,
+            )
+        except Exception:
+            logger.exception(
+                "Contact submission %s was saved, but the notification email could not be sent.",
+                submission.pk,
+            )
         messages.success(request, "Thank you. Your message has been received.")
         return redirect('contact')
 

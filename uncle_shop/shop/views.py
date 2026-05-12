@@ -47,7 +47,7 @@ def contact(request):
             notification = EmailMessage(
                 subject,
                 body,
-                getattr(settings, 'DEFAULT_FROM_EMAIL', 'info@causeofjoybuilders.com'),
+                getattr(settings, 'DEFAULT_FROM_EMAIL', 'ndubueze77@yahoo.com'),
                 [recipient],
             )
             notification.reply_to = [email]

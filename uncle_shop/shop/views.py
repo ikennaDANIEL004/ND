@@ -2,7 +2,7 @@ import logging
 
 from django.conf import settings
 from django.contrib import messages
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from django.shortcuts import render, redirect
 
 from .models import Product, Service, ContactSubmission
@@ -34,8 +34,9 @@ def contact(request):
             phone=phone,
             message=message,
         )
-        subject = f"New website enquiry from {name}"
+        subject = f"New contact form message from {name}"
         body = (
+            "A new message was submitted from the website contact page.\n\n"
             f"Name: {name}\n"
             f"Email: {email}\n"
             f"Phone: {phone}\n\n"
@@ -43,13 +44,14 @@ def contact(request):
         )
         recipient = getattr(settings, 'CONTACT_NOTIFICATION_EMAIL', 'ndubueze77@yahoo.com')
         try:
-            send_mail(
+            notification = EmailMessage(
                 subject,
                 body,
                 getattr(settings, 'DEFAULT_FROM_EMAIL', 'info@causeofjoybuilders.com'),
                 [recipient],
-                fail_silently=False,
             )
+            notification.reply_to = [email]
+            notification.send(fail_silently=False)
         except Exception:
             logger.exception(
                 "Contact submission %s was saved, but the notification email could not be sent.",

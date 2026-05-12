@@ -120,13 +120,25 @@
       box-shadow: 0 30px 50px -30px rgba(2, 6, 23, 0.35);
     }
     .logo-badge {
-      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      background: var(--ink);
+      color: #ffffff;
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 16px 32px -20px rgba(11, 18, 32, 0.45);
     }
     nav.nav--contrast .logo-badge {
       background: #ffffff;
       color: var(--ink);
-      border: 1px solid rgba(15, 23, 42, 0.08);
-      box-shadow: 0 10px 24px -18px rgba(15, 23, 42, 0.24);
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.08), 0 0 24px -6px rgba(0, 0, 0, 0.18);
+      animation: logoBlackShine 3.2s ease-in-out infinite alternate;
+    }
+    @keyframes logoBlackShine {
+      from {
+        box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.08), 0 0 18px -6px rgba(0, 0, 0, 0.14);
+      }
+      to {
+        box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.14), 0 0 28px -4px rgba(0, 0, 0, 0.24);
+      }
     }
     .btn-primary {
       background: linear-gradient(135deg, #0ea5e9 0%, #14b8a6 100%);
@@ -188,7 +200,7 @@
             <a href="{% url 'contact' %}" class="hover:text-accent" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Contact</a>
           </div>
           <a href="{% url 'contact' %}" class="hidden md:inline-flex btn-primary text-white px-5 py-2 rounded-full font-semibold transition" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Contact Us</a>
-          <button id="mobileMenuButton" class="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-slate-200 bg-white/90 text-ink shadow-sm transition hover:border-accent/40 md:hidden" aria-controls="mobileMenu" aria-expanded="false" aria-label="Open navigation">
+          <button id="mobileMenuButton" type="button" class="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-slate-200 bg-white/90 text-ink shadow-sm transition hover:border-accent/40 md:hidden" aria-controls="mobileMenu" aria-expanded="false" aria-label="Open navigation">
             <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
@@ -212,7 +224,7 @@
             <div class="text-xs text-slate-300 -mt-1">Mobile navigation</div>
           </div>
         </div>
-        <button data-menu-close class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center">
+        <button data-menu-close type="button" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
           </svg>

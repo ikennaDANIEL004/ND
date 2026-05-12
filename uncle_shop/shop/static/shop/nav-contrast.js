@@ -107,6 +107,12 @@
     }
   };
 
-  document.addEventListener('DOMContentLoaded', initSiteChrome);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSiteChrome);
+  } else {
+    initSiteChrome();
+  }
+
   document.addEventListener('htmx:load', initSiteChrome);
+  document.addEventListener('htmx:afterSwap', initSiteChrome);
 })();

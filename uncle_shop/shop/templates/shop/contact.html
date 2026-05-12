@@ -16,9 +16,9 @@
 <section class="py-20 bg-white">
   <div class="container-custom">
     {% if messages %}
-      <div class="mb-8 hidden">
+      <div class="mb-8">
       {% for message in messages %}
-      <div data-contact-success class="bg-emerald-50 border border-emerald-200 text-emerald-700 p-4 rounded-xl">{{ message }}</div>
+      <div data-contact-success class="rounded-2xl border border-emerald-200 bg-emerald-50 p-4 font-semibold text-emerald-700">{{ message }}</div>
       {% endfor %}
     </div>
     {% endif %}

@@ -40,7 +40,7 @@ sitemaps = {
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('', include('yourapp.urls')),
+    path('', include('shop.urls')),
 
     path(
         'sitemap.xml',

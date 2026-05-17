@@ -7,6 +7,9 @@ from django.shortcuts import render, redirect
 
 from .models import Product, Service, ContactSubmission
 
+from django.contrib.sitemaps import Sitemap
+from django.urls import reverse
+
 logger = logging.getLogger(__name__)
 
 def home(request):
@@ -65,3 +68,25 @@ def contact(request):
 
 def why_us(request):
     return render(request, 'shop/why_us.html')
+
+
+
+
+
+
+
+class StaticViewSitemap(Sitemap):
+    priority = 0.8
+    changefreq = "weekly"
+
+    def items(self):
+        return [
+            "home",
+            "about",
+            "services",
+            "why_us",
+            "contact",
+        ]
+
+    def location(self, item):
+        return reverse(item)

@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+
 from django.contrib.sitemaps.views import sitemap
 from shop.sitemaps import StaticViewSitemap
 
@@ -28,12 +29,26 @@ urlpatterns = [
     path('',include('shop.urls')),
 ] # passkey= username=causeofjoybuilders,password=1234567890abc
 
-path(
-    'sitemap.xml',
-    sitemap,
-    {'sitemaps': sitemaps},
-    name='django.contrib.sitemaps.views.sitemap'
-),
+
+
+
+
+sitemaps = {
+    'static': StaticViewSitemap,
+}
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+
+    path('', include('yourapp.urls')),
+
+    path(
+        'sitemap.xml',
+        sitemap,
+        {'sitemaps': sitemaps},
+        name='django.contrib.sitemaps.views.sitemap'
+    ),
+]
 
 
 

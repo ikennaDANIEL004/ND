@@ -1,0 +1,19 @@
+{
+  "name": "Cause of Our Joy Builders",
+  "short_name": "COJB",
+  "icons": [
+    {
+      "src": "/static/shop/images/logo-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/shop/images/logo-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#0b1220",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}

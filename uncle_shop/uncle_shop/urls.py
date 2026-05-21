@@ -27,28 +27,34 @@ sitemaps = {
 urlpatterns = [
     path('ND-ID-project-backend/', admin.site.urls),
     path('',include('shop.urls')),
-] # passkey= username=causeofjoybuilders,password=1234567890abc
-
-
-
-
-
-sitemaps = {
-    'static': StaticViewSitemap,
-}
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-
-    path('', include('shop.urls')),
-
     path(
         'sitemap.xml',
         sitemap,
         {'sitemaps': sitemaps},
         name='django.contrib.sitemaps.views.sitemap'
     ),
-]
+] # passkey= username=causeofjoybuilders,password=1234567890abc
+
+
+
+
+
+# sitemaps = {
+#     'static': StaticViewSitemap,
+# }
+
+# urlpatterns = [
+    # path('admin/', admin.site.urls),
+
+    # path('', include('shop.urls')),
+
+#     path(
+#         'sitemap.xml',
+#         sitemap,
+#         {'sitemaps': sitemaps},
+#         name='django.contrib.sitemaps.views.sitemap'
+#     ),
+# ]
 
 
 

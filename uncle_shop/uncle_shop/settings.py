@@ -49,6 +49,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'shop.middleware.CanonicalHostRedirectMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -69,6 +70,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'shop.context_processors.canonical_url',
             ],
         },
     },
@@ -144,6 +146,13 @@ ALLOWED_HOSTS = [
     "www.causeofjoybuilders.com",
     "nd-production-42eb.up.railway.app",
 ]
+CANONICAL_SCHEME = "https"
+CANONICAL_HOST = "causeofjoybuilders.com"
+CANONICAL_HOST_REDIRECTS = [
+    "www.causeofjoybuilders.com",
+    "nd-production-42eb.up.railway.app",
+]
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 

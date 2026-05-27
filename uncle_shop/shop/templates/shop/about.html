@@ -87,8 +87,11 @@
 <section class="py-16 bg-slate-950 text-white">
   <div class="container-custom text-center">
     <h2 class="text-3xl md:text-4xl font-display font-semibold">Connect with the leadership of COJB</h2>
-    <p class="mt-4 text-slate-300">Reach out to discuss market advice, trade opportunities, products, and business partnerships.</p>
-    <a href="{% url 'contact' %}" class="mt-6 inline-flex items-center justify-center px-8 py-3 rounded-full btn-primary text-white font-semibold transition">Contact the CEO</a>
+    <p class="mt-4 text-slate-300">Reach out to discuss market advice, trade opportunities, products, business partnerships, or browse the gallery to see current stock movement first.</p>
+    <div class="mt-6 flex flex-wrap justify-center gap-4">
+      <a href="{% url 'gallery' %}" class="inline-flex items-center justify-center px-8 py-3 rounded-full border border-white/30 text-white font-semibold transition hover:bg-white/10" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">View Gallery</a>
+      <a href="{% url 'contact' %}" class="inline-flex items-center justify-center px-8 py-3 rounded-full btn-primary text-white font-semibold transition">Contact the CEO</a>
+    </div>
   </div>
 </section>
 {% endblock %}

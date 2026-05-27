@@ -24,6 +24,9 @@ def services(request):
     services_list = Service.objects.all()
     return render(request, 'shop/services.html', {'services': services_list})
 
+def gallery(request):
+    return render(request, 'shop/gallery.html')
+
 def contact(request):
     if request.method == 'POST':
         name = request.POST.get('name', '').strip()
@@ -84,6 +87,7 @@ class StaticViewSitemap(Sitemap):
             "home",
             "about",
             "services",
+            "gallery",
             "why_us",
             "contact",
         ]

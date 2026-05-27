@@ -76,7 +76,10 @@
         <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Our promise</p>
         <h2 class="mt-3 text-3xl md:text-5xl font-display font-semibold">We help customers choose wisely before they spend heavily.</h2>
         <p class="mt-4 text-slate-300">We do not simply introduce names. We help clients think through market fit, partner quality, product movement, buyer readiness, and practical commercial structure. That is the difference between entering a market and entering it intelligently.</p>
-        <a href="{% url 'contact' %}" class="mt-8 inline-flex items-center justify-center rounded-full btn-primary px-8 py-3 font-semibold text-white transition" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Begin the Conversation</a>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="{% url 'gallery' %}" class="inline-flex items-center justify-center rounded-full border border-white/30 px-8 py-3 font-semibold text-white transition hover:bg-white/10" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">View Proof Gallery</a>
+          <a href="{% url 'contact' %}" class="inline-flex items-center justify-center rounded-full btn-primary px-8 py-3 font-semibold text-white transition" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Begin the Conversation</a>
+        </div>
       </div>
     </div>
   </div>

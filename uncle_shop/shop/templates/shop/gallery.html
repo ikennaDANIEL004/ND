@@ -1,331 +1,77 @@
 {% extends 'shop/base.html' %}
 {% load static %}
 
-{% block title %}Gallery - Cause of Our Joy Builders Trade Movement{% endblock %}
+{% block title %}Field Gallery | Cause of Our Joy Builders{% endblock %}
 
 {% block extra_css %}
 <style>
-  .gallery-shell {
-    background:
-      linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(17, 24, 39, 0.92) 42%, rgba(20, 83, 45, 0.88)),
-      radial-gradient(circle at 16% 18%, rgba(20, 184, 166, 0.28), transparent 28%),
-      radial-gradient(circle at 88% 12%, rgba(245, 158, 11, 0.2), transparent 30%);
-  }
-  .gallery-noise {
-    background-image:
-      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-    background-size: 42px 42px;
-    mask-image: linear-gradient(to bottom, black, transparent 86%);
-  }
-  .gallery-orbit {
-    transform-style: preserve-3d;
-    perspective: 1200px;
-  }
-  .gallery-hero-tile {
-    animation: galleryLift 9s ease-in-out infinite;
-    box-shadow: 0 32px 80px -42px rgba(0, 0, 0, 0.9);
-  }
-  .gallery-hero-tile:nth-child(2) { animation-delay: -2.2s; }
-  .gallery-hero-tile:nth-child(3) { animation-delay: -4.4s; }
-  @keyframes galleryLift {
-    0%, 100% { transform: translate3d(0, 0, 0) rotateX(0deg); }
-    50% { transform: translate3d(0, -14px, 36px) rotateX(2deg); }
-  }
-  .gallery-filter.is-active {
-    background: linear-gradient(135deg, #14b8a6, #f59e0b);
-    color: #0b1220;
-    border-color: transparent;
-  }
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    grid-auto-flow: dense;
-    gap: 1rem;
-  }
-  .gallery-card {
-    min-height: 360px;
-    isolation: isolate;
-    transform: translateY(22px);
-    opacity: 0;
-    transition: opacity 0.55s ease, transform 0.55s ease, filter 0.35s ease;
-  }
-  .gallery-card.is-visible {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  .gallery-card.is-hidden {
-    display: none;
-  }
-  .gallery-card::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background: linear-gradient(180deg, transparent 28%, rgba(2, 6, 23, 0.1) 48%, rgba(2, 6, 23, 0.88));
-    pointer-events: none;
-  }
-  .gallery-card img,
-  .gallery-card video {
-    transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.7s ease;
-  }
-  .gallery-card:hover img,
-  .gallery-card:hover video {
-    transform: scale(1.06);
-    filter: saturate(1.08) contrast(1.03);
-  }
-  .gallery-card:hover .gallery-caption {
-    transform: translateY(-6px);
-  }
-  .gallery-wide { grid-column: span 7; }
-  .gallery-tall { grid-column: span 5; min-height: 520px; }
-  .gallery-square { grid-column: span 4; }
-  .gallery-medium { grid-column: span 5; }
-  .gallery-video { grid-column: span 7; min-height: 520px; }
-  .gallery-caption {
-    transition: transform 0.45s ease;
-  }
-  .gallery-lightbox {
-    backdrop-filter: blur(18px);
-  }
-  @media (max-width: 1024px) {
-    .gallery-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
-    .gallery-wide,
-    .gallery-tall,
-    .gallery-square,
-    .gallery-medium,
-    .gallery-video { grid-column: span 6; min-height: 420px; }
-  }
-  @media (max-width: 640px) {
-    .gallery-grid { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 1rem; }
-    .gallery-card { min-width: 82vw; min-height: 430px; scroll-snap-align: center; }
-  }
+  .gallery-page { background: #fff; color: #0b0f0c; }
+  .gallery-kicker { font-family: 'DM Mono', monospace; font-size: .69rem; letter-spacing: .16em; text-transform: uppercase; }
+  .gallery-hero { min-height: min(760px, calc(100svh - 20px)); background: #0b0f0c; }
+  .hero-media { position: absolute; inset: 0; overflow: hidden; }
+  .hero-media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,9,6,.72) 0%, rgba(5,9,6,.32) 50%, rgba(5,9,6,.12) 100%), linear-gradient(0deg, rgba(5,9,6,.48), transparent 48%); }
+  .hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: center; animation: heroBreathe 16s ease-in-out infinite alternate; }
+  @keyframes heroBreathe { from { transform: scale(1); } to { transform: scale(1.055); } }
+  .hero-index { font-family: 'DM Mono', monospace; font-size: .72rem; letter-spacing: .14em; }
+  .gallery-rule { height: 1px; background: #d9ded9; }
+  .gallery-collection { display: grid; gap: 1.5rem; grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .gallery-item { grid-column: span 4; min-width: 0; }
+  .gallery-item--wide { grid-column: span 7; }
+  .gallery-item--narrow { grid-column: span 5; }
+  .gallery-image { display: block; position: relative; overflow: hidden; background: #edf0ed; }
+  .gallery-image img, .gallery-image video { width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2,.8,.2,1); }
+  .gallery-image:hover img, .gallery-image:hover video { transform: scale(1.035); }
+  .gallery-image--arrival { aspect-ratio: 4 / 5; }
+  .gallery-image--wide { aspect-ratio: 16 / 10; }
+  .gallery-image--narrow { aspect-ratio: 4 / 5; }
+  .gallery-caption { display: flex; gap: 1rem; justify-content: space-between; padding-top: .85rem; color: #111813; }
+  .gallery-caption h3 { font-size: 1rem; letter-spacing: -.02em; }
+  .gallery-caption p { margin-top: .22rem; color: #647066; font-size: .86rem; line-height: 1.45; }
+  .gallery-count { color: #159947; font-family: 'DM Mono', monospace; font-size: .72rem; padding-top: .15rem; }
+  .gallery-play { position: absolute; left: 1.25rem; top: 1.25rem; display: inline-flex; align-items: center; gap: .55rem; padding: .65rem .85rem; border-radius: 999px; background: rgba(255,255,255,.93); color: #0b0f0c; font-family: 'DM Mono', monospace; font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; }
+  .gallery-cta { background: #0b0f0c; color: #fff; }
+  @media (max-width: 767px) { .gallery-hero { min-height: 680px; } .hero-media::after { background: linear-gradient(0deg, rgba(5,9,6,.9) 0%, rgba(5,9,6,.26) 74%); } .gallery-collection { grid-template-columns: 1fr; gap: 2rem; } .gallery-item, .gallery-item--wide, .gallery-item--narrow { grid-column: auto; } .gallery-image--arrival, .gallery-image--wide, .gallery-image--narrow { aspect-ratio: 4 / 5; } }
 </style>
 {% endblock %}
 
 {% block content %}
-<section class="gallery-shell relative overflow-hidden text-white">
-  <div class="gallery-noise absolute inset-0"></div>
-  <div class="container-custom relative z-10 py-20 md:py-28">
-    <div class="grid gap-12 lg:grid-cols-[0.88fr_1.12fr] lg:items-center">
-      <div>
-        <p class="inline-flex rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs uppercase tracking-[0.3em] text-teal-100">COJB field gallery</p>
-        <h1 class="mt-6 text-4xl font-display font-semibold leading-tight md:text-6xl">Real inventory, real movement, real trade confidence.</h1>
-        <p class="mt-5 max-w-2xl text-lg text-slate-200">A curated look at Cause of Our Joy Builders' product movement, warehouse stock, packaged electrical fittings, and active supply handling for serious buyers and partners.</p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href="#gallery-wall" class="btn-primary rounded-full px-7 py-3 font-semibold text-white transition">View Gallery</a>
-          <a href="{% url 'contact' %}" class="rounded-full border border-white/30 px-7 py-3 font-semibold text-white transition hover:bg-white/10" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Discuss Supply</a>
-        </div>
-      </div>
-
-      <div class="gallery-orbit grid grid-cols-5 gap-3 md:gap-4">
-        <div class="gallery-hero-tile col-span-3 overflow-hidden rounded-[2rem] border border-white/10 bg-white/10">
-          <img src="{% static 'shop/images/gallery/causeofjoyitem1.jpeg' %}" alt="Stacked packaged goods ready for dispatch" class="h-72 w-full object-cover md:h-[430px]">
-        </div>
-        <div class="gallery-hero-tile col-span-2 overflow-hidden rounded-[2rem] border border-white/10 bg-white/10 self-end">
-          <img src="{% static 'shop/images/gallery/causeofjoyitem5.jpeg' %}" alt="Warehouse stock arranged in bundles" class="h-56 w-full object-cover md:h-80">
-        </div>
-        <div class="gallery-hero-tile col-span-5 overflow-hidden rounded-[2rem] border border-white/10 bg-white/10">
-          <video class="h-52 w-full object-cover md:h-64" muted playsinline autoplay loop preload="metadata" poster="{% static 'shop/images/gallery/causeofjoyitem4.jpeg' %}">
-            <source src="{% static 'shop/images/gallery/causeofjoyvideo1.mp4' %}" type="video/mp4">
-          </video>
-        </div>
-      </div>
+<main class="gallery-page">
+  <section class="gallery-hero relative isolate flex items-end overflow-hidden text-white">
+    <div class="hero-media" aria-hidden="true"><img src="{% static 'shop/images/gallery/causeofjoyitem1.jpeg' %}" alt=""></div>
+    <div class="container-custom relative z-10 w-full pb-10 pt-40 md:pb-14 md:pt-52">
+      <div class="max-w-3xl"><p class="gallery-kicker text-emerald-200">Cause of Our Joy Builders · Field Gallery</p><h1 class="mt-5 max-w-3xl text-5xl font-display font-semibold leading-[.95] tracking-[-.065em] md:text-7xl">Trade, shown in motion.</h1><p class="mt-6 max-w-xl text-base leading-7 text-white/82 md:text-lg">A close look at the inventory, order preparation and hands-on supply work behind COJB's commercial conversations.</p></div>
+      <div class="mt-12 flex items-center justify-between border-t border-white/30 pt-4"><p class="gallery-kicker text-white/70">Scroll to explore</p><p class="hero-index">01 — 06</p></div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="gallery-wall" class="bg-[#07111f] py-20 text-white">
-  <div class="container-custom">
-    <div class="mb-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-      <div>
-        <p class="text-xs uppercase tracking-[0.3em] text-teal-200">Trade proof wall</p>
-        <h2 class="mt-3 max-w-3xl text-3xl font-display font-semibold md:text-5xl">A professional view of stock depth, handling, and delivery readiness.</h2>
-      </div>
-      <div class="flex flex-wrap gap-2" aria-label="Gallery filters">
-        <button type="button" class="gallery-filter is-active rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-slate-200 transition" data-filter="all">All</button>
-        <button type="button" class="gallery-filter rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-slate-200 transition" data-filter="warehouse">Warehouse</button>
-        <button type="button" class="gallery-filter rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-slate-200 transition" data-filter="dispatch">Dispatch</button>
-        <button type="button" class="gallery-filter rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-slate-200 transition" data-filter="video">Video</button>
-      </div>
-    </div>
+  <section class="py-20 md:py-28"><div class="container-custom"><div class="grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-start"><p class="gallery-kicker pt-2 text-emerald-700">The COJB collection</p><div><h2 class="max-w-4xl text-4xl font-display font-semibold leading-[1.04] tracking-[-.055em] md:text-6xl">Evidence of readiness, from stock depth to dispatch.</h2><p class="mt-7 max-w-2xl text-base leading-7 text-slate-600 md:text-lg">Our gallery documents the practical side of trading: packaged electrical fittings, visible warehouse volume, orderly product handling and the people moving supply forward. It is not stock photography; it is a view into the work.</p></div></div></div></section>
 
-    <div class="gallery-grid">
-      <button type="button" class="gallery-card gallery-wide relative overflow-hidden rounded-3xl text-left" data-type="image" data-category="dispatch" data-src="{% static 'shop/images/gallery/causeofjoyitem1.jpeg' %}" data-title="Packed Stock Ready for Movement" data-copy="Outdoor stock staging with packed cartons arranged for buyer inspection and dispatch planning.">
-        <img src="{% static 'shop/images/gallery/causeofjoyitem1.jpeg' %}" alt="Packed stock ready for movement" class="absolute inset-0 h-full w-full object-cover">
-        <span class="gallery-caption absolute inset-x-0 bottom-0 z-10 p-6">
-          <span class="mb-3 inline-flex rounded-full bg-amber-400 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-slate-950">Dispatch</span>
-          <span class="block text-2xl font-display font-semibold">Packed Stock Ready for Movement</span>
-          <span class="mt-2 block max-w-xl text-sm text-slate-200">Outdoor stock staging with packed cartons arranged for buyer inspection and dispatch planning.</span>
-        </span>
-      </button>
+  <section class="pb-20 md:pb-28"><div class="container-custom"><div class="mb-7 flex items-end justify-between gap-4"><div><p class="gallery-kicker text-emerald-700">New field arrivals</p><h2 class="mt-3 text-3xl font-display font-semibold tracking-[-.045em] md:text-4xl">Latest movement</h2></div><p class="hidden max-w-xs text-right text-sm leading-5 text-slate-500 md:block">A concise record of activity across COJB's supply and fulfilment workflow.</p></div><div class="gallery-rule mb-7"></div><div class="gallery-collection">
+    <article class="gallery-item"><button class="gallery-image gallery-image--arrival w-full text-left" data-media="image" data-src="{% static 'shop/images/gallery/causeofjoyitem1.jpeg' %}" data-title="Dispatch-ready stock" data-copy="Packed cartons staged for inspection, loading and onward movement."><img src="{% static 'shop/images/gallery/causeofjoyitem1.jpeg' %}" alt="Packed stock staged for dispatch" loading="lazy"></button><div class="gallery-caption"><div><h3>Dispatch-ready stock</h3><p>Prepared for buyer review and logistics planning.</p></div><span class="gallery-count">01</span></div></article>
+    <article class="gallery-item"><button class="gallery-image gallery-image--arrival w-full text-left" data-media="image" data-src="{% static 'shop/images/gallery/causeofjotitem2.jpeg' %}" data-title="Warehouse volume" data-copy="Rows of boxed electrical fittings and packaged supplies ready to serve project and market requests."><img src="{% static 'shop/images/gallery/causeofjotitem2.jpeg' %}" alt="Rows of boxed electrical fittings in warehouse" loading="lazy"></button><div class="gallery-caption"><div><h3>Warehouse volume</h3><p>Reliable supply begins with visible depth.</p></div><span class="gallery-count">02</span></div></article>
+    <article class="gallery-item"><button class="gallery-image gallery-image--arrival w-full text-left" data-media="image" data-src="{% static 'shop/images/gallery/causeofjoyitem3.jpeg' %}" data-title="Organised storage" data-copy="Boxed products arranged for clear counting, fast access and confident fulfilment."><img src="{% static 'shop/images/gallery/causeofjoyitem3.jpeg' %}" alt="Organised product cartons in storage" loading="lazy"></button><div class="gallery-caption"><div><h3>Organised storage</h3><p>Product visibility that supports decisive trade.</p></div><span class="gallery-count">03</span></div></article>
+  </div></div></section>
 
-      <button type="button" class="gallery-card gallery-tall relative overflow-hidden rounded-3xl text-left" data-type="image" data-category="warehouse" data-src="{% static 'shop/images/gallery/causeofjotitem2.jpeg' %}" data-title="Warehouse Volume and Product Depth" data-copy="Rows of boxed electrical fittings and packaged supplies showing dependable stock capacity.">
-        <img src="{% static 'shop/images/gallery/causeofjotitem2.jpeg' %}" alt="Warehouse volume and product depth" class="absolute inset-0 h-full w-full object-cover">
-        <span class="gallery-caption absolute inset-x-0 bottom-0 z-10 p-6">
-          <span class="mb-3 inline-flex rounded-full bg-teal-300 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-slate-950">Warehouse</span>
-          <span class="block text-2xl font-display font-semibold">Warehouse Volume and Product Depth</span>
-          <span class="mt-2 block text-sm text-slate-200">Rows of boxed electrical fittings and packaged supplies showing dependable stock capacity.</span>
-        </span>
-      </button>
+  <section class="bg-[#0b0f0c] py-20 text-white md:py-28"><div class="container-custom"><div class="mb-9 grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:items-end"><p class="gallery-kicker text-emerald-300">Supply movement</p><h2 class="max-w-3xl text-4xl font-display font-semibold leading-[1.04] tracking-[-.055em] md:text-6xl">Good trade needs more than a promise. It needs a clear path from stock to delivery.</h2></div><button class="gallery-image gallery-image--wide w-full text-left" data-media="video" data-src="{% static 'shop/images/gallery/causeofjoyvideo1.mp4' %}" data-title="Supply movement in motion" data-copy="A field view of COJB inventory handling and active supply movement."><video muted playsinline autoplay loop preload="metadata" poster="{% static 'shop/images/gallery/causeofjoyitem4.jpeg' %}"><source src="{% static 'shop/images/gallery/causeofjoyvideo1.mp4' %}" type="video/mp4"></video><span class="gallery-play"><span aria-hidden="true">▶</span> Play field video</span></button><div class="mt-4 flex flex-col justify-between gap-3 text-sm text-white/65 md:flex-row"><p>From field handling to dispatch conversations.</p><p class="gallery-kicker text-emerald-200">Video · 04</p></div></div></section>
 
-      <button type="button" class="gallery-card gallery-video relative overflow-hidden rounded-3xl text-left" data-type="video" data-category="video dispatch" data-src="{% static 'shop/images/gallery/causeofjoyvideo1.mp4' %}" data-title="Supply Movement in Motion" data-copy="A closer motion view of COJB stock handling and field activity.">
-        <video class="absolute inset-0 h-full w-full object-cover" muted playsinline autoplay loop preload="metadata" poster="{% static 'shop/images/gallery/causeofjoyitem4.jpeg' %}">
-          <source src="{% static 'shop/images/gallery/causeofjoyvideo1.mp4' %}" type="video/mp4">
-        </video>
-        <span class="absolute left-6 top-6 z-10 inline-flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-white/15 text-xl backdrop-blur">Play</span>
-        <span class="gallery-caption absolute inset-x-0 bottom-0 z-10 p-6">
-          <span class="mb-3 inline-flex rounded-full bg-white px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-slate-950">Video</span>
-          <span class="block text-2xl font-display font-semibold">Supply Movement in Motion</span>
-          <span class="mt-2 block max-w-xl text-sm text-slate-200">A closer motion view of COJB stock handling and field activity.</span>
-        </span>
-      </button>
+  <section class="py-20 md:py-28"><div class="container-custom"><div class="mb-7 flex items-end justify-between gap-4"><div><p class="gallery-kicker text-emerald-700">Selected views</p><h2 class="mt-3 text-3xl font-display font-semibold tracking-[-.045em] md:text-4xl">The details that keep trade moving</h2></div><a href="{% url 'contact' %}" class="hidden text-sm font-semibold text-emerald-700 underline decoration-emerald-700/30 underline-offset-4 hover:text-emerald-900 md:block" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Discuss your supply needs ↗</a></div><div class="gallery-rule mb-7"></div><div class="gallery-collection">
+    <article class="gallery-item gallery-item--wide"><button class="gallery-image gallery-image--wide w-full text-left" data-media="image" data-src="{% static 'shop/images/gallery/causeofjoyitem4.jpeg' %}" data-title="Inventory wall" data-copy="A high-density product view that makes quantities and package consistency easy to assess."><img src="{% static 'shop/images/gallery/causeofjoyitem4.jpeg' %}" alt="Dense product inventory inside warehouse" loading="lazy"></button><div class="gallery-caption"><div><h3>Inventory wall</h3><p>Consistent packaging and practical supply visibility.</p></div><span class="gallery-count">05</span></div></article>
+    <article class="gallery-item gallery-item--narrow"><button class="gallery-image gallery-image--narrow w-full text-left" data-media="image" data-src="{% static 'shop/images/gallery/causeofjoyitem5.jpeg' %}" data-title="Bundled product blocks" data-copy="Compact bundles assembled for counting, loading and steady fulfilment."><img src="{% static 'shop/images/gallery/causeofjoyitem5.jpeg' %}" alt="Bundled product blocks in stock" loading="lazy"></button><div class="gallery-caption"><div><h3>Bundled product blocks</h3><p>Orderly quantities, ready for the next step.</p></div><span class="gallery-count">06</span></div></article>
+  </div></div></section>
 
-      <button type="button" class="gallery-card gallery-medium relative overflow-hidden rounded-3xl text-left" data-type="image" data-category="warehouse" data-src="{% static 'shop/images/gallery/causeofjoyitem3.jpeg' %}" data-title="Stacked Cartons in Storage" data-copy="Organized boxed products inside storage, ready for market and project requests.">
-        <img src="{% static 'shop/images/gallery/causeofjoyitem3.jpeg' %}" alt="Stacked cartons in storage" class="absolute inset-0 h-full w-full object-cover">
-        <span class="gallery-caption absolute inset-x-0 bottom-0 z-10 p-6">
-          <span class="mb-3 inline-flex rounded-full bg-emerald-300 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-slate-950">Storage</span>
-          <span class="block text-2xl font-display font-semibold">Stacked Cartons in Storage</span>
-          <span class="mt-2 block text-sm text-slate-200">Organized boxed products inside storage, ready for market and project requests.</span>
-        </span>
-      </button>
+  <section class="gallery-cta py-20 md:py-28"><div class="container-custom grid gap-10 lg:grid-cols-[1.2fr_.8fr] lg:items-end"><div><p class="gallery-kicker text-emerald-300">Start a conversation</p><h2 class="mt-5 max-w-3xl text-4xl font-display font-semibold leading-[1.03] tracking-[-.055em] md:text-6xl">Looking for current stock, quantities or trade support?</h2></div><div class="lg:pb-2"><p class="max-w-md leading-7 text-white/70">Tell us what you need. COJB can help you connect supply, local market knowledge and the right commercial next step.</p><a href="{% url 'contact' %}" class="btn-contact mt-7 inline-flex rounded-full px-6 py-3 font-semibold transition" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Contact Us <span class="ml-2" aria-hidden="true">↗</span></a></div></div></section>
+</main>
 
-      <button type="button" class="gallery-card gallery-square relative overflow-hidden rounded-3xl text-left" data-type="image" data-category="warehouse" data-src="{% static 'shop/images/gallery/causeofjoyitem4.jpeg' %}" data-title="Interior Inventory Wall" data-copy="A dense product wall showing consistent packaging, batch depth, and supply visibility.">
-        <img src="{% static 'shop/images/gallery/causeofjoyitem4.jpeg' %}" alt="Interior inventory wall" class="absolute inset-0 h-full w-full object-cover">
-        <span class="gallery-caption absolute inset-x-0 bottom-0 z-10 p-6">
-          <span class="mb-3 inline-flex rounded-full bg-teal-300 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-slate-950">Inventory</span>
-          <span class="block text-2xl font-display font-semibold">Interior Inventory Wall</span>
-          <span class="mt-2 block text-sm text-slate-200">A dense product wall showing consistent packaging, batch depth, and supply visibility.</span>
-        </span>
-      </button>
-
-      <button type="button" class="gallery-card gallery-square relative overflow-hidden rounded-3xl text-left" data-type="image" data-category="warehouse" data-src="{% static 'shop/images/gallery/causeofjoyitem5.jpeg' %}" data-title="Bundled Product Blocks" data-copy="Compact bundles arranged for counting, loading, and steady order fulfillment.">
-        <img src="{% static 'shop/images/gallery/causeofjoyitem5.jpeg' %}" alt="Bundled product blocks" class="absolute inset-0 h-full w-full object-cover">
-        <span class="gallery-caption absolute inset-x-0 bottom-0 z-10 p-6">
-          <span class="mb-3 inline-flex rounded-full bg-lime-200 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-slate-950">Stock</span>
-          <span class="block text-2xl font-display font-semibold">Bundled Product Blocks</span>
-          <span class="mt-2 block text-sm text-slate-200">Compact bundles arranged for counting, loading, and steady order fulfillment.</span>
-        </span>
-      </button>
-    </div>
-  </div>
-</section>
-
-<section class="bg-white py-16 md:py-20">
-  <div class="container-custom">
-    <div class="grid gap-8 rounded-[2rem] bg-slate-950 p-8 text-white md:grid-cols-[1fr_auto] md:items-center md:p-10">
-      <div>
-        <p class="text-xs uppercase tracking-[0.3em] text-teal-200">Seen enough to start?</p>
-        <h2 class="mt-3 text-3xl font-display font-semibold md:text-4xl">Ask COJB about current stock, quantities, and delivery conversations.</h2>
-        <p class="mt-3 max-w-2xl text-slate-300">The gallery shows the practical side of the business: packed goods, visible inventory, and trade readiness. The next step is a direct conversation around your product need.</p>
-      </div>
-      <a href="{% url 'contact' %}" class="btn-primary inline-flex justify-center rounded-full px-8 py-3 font-semibold text-white transition" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Contact COJB</a>
-    </div>
-  </div>
-</section>
-
-<div id="galleryLightbox" class="gallery-lightbox fixed inset-0 z-[80] hidden bg-slate-950/88 p-4 text-white">
-  <button type="button" id="galleryClose" class="absolute right-4 top-4 z-20 h-11 w-11 rounded-full border border-white/20 bg-white/10 text-2xl leading-none">x</button>
-  <div class="flex h-full items-center justify-center">
-    <div class="grid w-full max-w-6xl gap-5 lg:grid-cols-[1fr_320px] lg:items-center">
-      <div id="galleryStage" class="overflow-hidden rounded-3xl bg-black shadow-2xl"></div>
-      <div class="rounded-3xl border border-white/10 bg-white/10 p-6 backdrop-blur">
-        <p id="galleryType" class="text-xs uppercase tracking-[0.3em] text-teal-200">Gallery</p>
-        <h3 id="galleryTitle" class="mt-3 text-3xl font-display font-semibold"></h3>
-        <p id="galleryCopy" class="mt-3 text-sm text-slate-300"></p>
-        <div class="mt-6 flex gap-3">
-          <button type="button" id="galleryPrev" class="rounded-full border border-white/20 px-5 py-2 text-sm font-semibold hover:bg-white/10">Previous</button>
-          <button type="button" id="galleryNext" class="rounded-full border border-white/20 px-5 py-2 text-sm font-semibold hover:bg-white/10">Next</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<div id="galleryLightbox" class="fixed inset-0 z-[80] hidden items-center justify-center bg-black/90 p-4" role="dialog" aria-modal="true" aria-label="Gallery preview"><button id="galleryClose" class="absolute right-5 top-5 flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-black/30 text-2xl text-white" type="button" aria-label="Close preview">×</button><div class="grid w-full max-w-6xl gap-5 lg:grid-cols-[1fr_280px] lg:items-center"><div id="galleryStage" class="overflow-hidden bg-black"></div><div class="bg-white p-6 text-slate-950"><p id="galleryType" class="gallery-kicker text-emerald-700">Field image</p><h3 id="galleryTitle" class="mt-3 text-3xl font-display font-semibold tracking-[-.04em]"></h3><p id="galleryCopy" class="mt-3 text-sm leading-6 text-slate-600"></p></div></div></div>
 {% endblock %}
 
 {% block extra_js %}
 <script>
-  (function () {
-    const cards = Array.from(document.querySelectorAll('.gallery-card'));
-    const filters = Array.from(document.querySelectorAll('.gallery-filter'));
-    const lightbox = document.getElementById('galleryLightbox');
-    const stage = document.getElementById('galleryStage');
-    const title = document.getElementById('galleryTitle');
-    const copy = document.getElementById('galleryCopy');
-    const type = document.getElementById('galleryType');
-    const close = document.getElementById('galleryClose');
-    const prev = document.getElementById('galleryPrev');
-    const next = document.getElementById('galleryNext');
-    let activeCards = cards;
-    let currentIndex = 0;
-
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.18 });
-
-    cards.forEach((card, index) => {
-      card.style.transitionDelay = `${Math.min(index * 70, 360)}ms`;
-      revealObserver.observe(card);
-    });
-
-    function showMedia(index) {
-      currentIndex = (index + activeCards.length) % activeCards.length;
-      const card = activeCards[currentIndex];
-      const src = card.dataset.src;
-      const isVideo = card.dataset.type === 'video';
-      stage.innerHTML = isVideo
-        ? `<video class="max-h-[78vh] w-full bg-black object-contain" controls autoplay playsinline src="${src}"></video>`
-        : `<img class="max-h-[78vh] w-full bg-black object-contain" src="${src}" alt="${card.dataset.title}">`;
-      title.textContent = card.dataset.title;
-      copy.textContent = card.dataset.copy;
-      type.textContent = isVideo ? 'Field video' : 'Field image';
-      lightbox.classList.remove('hidden');
-      document.body.classList.add('modal-open');
-    }
-
-    function closeMedia() {
-      lightbox.classList.add('hidden');
-      stage.innerHTML = '';
-      document.body.classList.remove('modal-open');
-    }
-
-    filters.forEach((filter) => {
-      filter.addEventListener('click', () => {
-        const selected = filter.dataset.filter;
-        filters.forEach((item) => item.classList.toggle('is-active', item === filter));
-        cards.forEach((card) => {
-          const categories = card.dataset.category.split(' ');
-          const visible = selected === 'all' || categories.includes(selected);
-          card.classList.toggle('is-hidden', !visible);
-        });
-        activeCards = cards.filter((card) => !card.classList.contains('is-hidden'));
-      });
-    });
-
-    cards.forEach((card) => {
-      card.addEventListener('click', () => {
-        activeCards = cards.filter((item) => !item.classList.contains('is-hidden'));
-        showMedia(activeCards.indexOf(card));
-      });
-    });
-
-    close.addEventListener('click', closeMedia);
-    prev.addEventListener('click', () => showMedia(currentIndex - 1));
-    next.addEventListener('click', () => showMedia(currentIndex + 1));
-    lightbox.addEventListener('click', (event) => {
-      if (event.target === lightbox) closeMedia();
-    });
-    document.addEventListener('keydown', (event) => {
-      if (lightbox.classList.contains('hidden')) return;
-      if (event.key === 'Escape') closeMedia();
-      if (event.key === 'ArrowLeft') showMedia(currentIndex - 1);
-      if (event.key === 'ArrowRight') showMedia(currentIndex + 1);
-    });
+  (() => {
+    const lightbox = document.getElementById('galleryLightbox'); const stage = document.getElementById('galleryStage'); const title = document.getElementById('galleryTitle'); const copy = document.getElementById('galleryCopy'); const type = document.getElementById('galleryType'); const close = document.getElementById('galleryClose');
+    const openPreview = (trigger) => { const isVideo = trigger.dataset.media === 'video'; stage.innerHTML = isVideo ? `<video class="max-h-[78vh] w-full object-contain" controls autoplay playsinline src="${trigger.dataset.src}"></video>` : `<img class="max-h-[78vh] w-full object-contain" src="${trigger.dataset.src}" alt="${trigger.dataset.title}">`; title.textContent = trigger.dataset.title; copy.textContent = trigger.dataset.copy; type.textContent = isVideo ? 'Field video' : 'Field image'; lightbox.classList.remove('hidden'); lightbox.classList.add('flex'); document.body.classList.add('modal-open'); };
+    const closePreview = () => { lightbox.classList.add('hidden'); lightbox.classList.remove('flex'); stage.innerHTML = ''; document.body.classList.remove('modal-open'); };
+    document.querySelectorAll('[data-media]').forEach((item) => item.addEventListener('click', () => openPreview(item))); close.addEventListener('click', closePreview); lightbox.addEventListener('click', (event) => { if (event.target === lightbox) closePreview(); }); document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && !lightbox.classList.contains('hidden')) closePreview(); });
   })();
 </script>
 {% endblock %}

@@ -19,8 +19,8 @@
       theme: {
         extend: {
           fontFamily: {
-            display: ['"Space Grotesk"', 'sans-serif'],
-            body: ['"Manrope"', 'sans-serif']
+            display: ['"DM Sans"', 'sans-serif'],
+            body: ['"DM Sans"', 'sans-serif']
           },
           colors: {
             ink: '#0b1220',
@@ -38,7 +38,7 @@
   <script src="https://unpkg.com/htmx.org@2.0.4" defer></script>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,300..800&display=swap');
 
     :root {
       --ink: #0b1220;
@@ -59,16 +59,15 @@
     }
 
     body {
-      font-family: 'Manrope', sans-serif;
+      font-family: 'DM Sans', sans-serif;
       color: var(--ink);
-      background: radial-gradient(circle at 20% 20%, rgba(20, 184, 166, 0.12), transparent 45%),
-        radial-gradient(circle at 80% 10%, rgba(245, 158, 11, 0.14), transparent 40%),
-        linear-gradient(180deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%);
+      background: #ffffff;
     }
 
     h1, h2, h3, h4, .font-display {
-      font-family: 'Space Grotesk', sans-serif;
-      letter-spacing: -0.02em;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 650;
+      letter-spacing: -0.045em;
     }
 
     ::-webkit-scrollbar {
@@ -155,6 +154,16 @@
       transform: translateY(-2px);
       box-shadow: 0 20px 36px -18px rgba(20, 184, 166, 0.8);
     }
+    .btn-contact {
+      background: #159947;
+      color: #ffffff;
+      box-shadow: 0 12px 22px -15px rgba(21, 153, 71, 0.8);
+    }
+    .btn-contact:hover {
+      background: #0e7d39;
+      transform: translateY(-2px);
+      box-shadow: 0 17px 28px -16px rgba(21, 153, 71, 0.9);
+    }
     .text-gradient {
       background: linear-gradient(135deg, #0ea5e9, #14b8a6, #f59e0b);
       -webkit-background-clip: text;
@@ -200,14 +209,15 @@
 
         <div class="flex shrink-0 items-center gap-2 md:gap-4">
           <div class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-700">
-            <a href="{% url 'home' %}" class="hover:text-accent" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Home</a>
+            {% if request.resolver_match.url_name != 'home' %}
+              <a href="{% url 'home' %}" class="hover:text-accent" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Home</a>
+            {% endif %}
             <a href="{% url 'about' %}" class="hover:text-accent" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">About</a>
             <a href="{% url 'services' %}" class="hover:text-accent" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Services</a>
             <a href="{% url 'gallery' %}" class="hover:text-accent" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Gallery</a>
             <a href="{% url 'why_us' %}" class="hover:text-accent" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Why COJB</a>
-            <a href="{% url 'contact' %}" class="hover:text-accent" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Contact</a>
           </div>
-          <a href="{% url 'contact' %}" class="hidden md:inline-flex btn-primary text-white px-5 py-2 rounded-full font-semibold transition" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Contact Us</a>
+          <a href="{% url 'contact' %}" class="hidden md:inline-flex btn-contact px-5 py-2 rounded-full font-semibold transition" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Contact Us</a>
           <button id="mobileMenuButton" type="button" class="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-slate-200 bg-white/90 text-ink shadow-sm transition hover:border-accent/40 md:hidden" aria-controls="mobileMenu" aria-expanded="false" aria-label="Open navigation">
             <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -251,16 +261,17 @@
       </div>
 
       <nav class="mt-8 flex flex-col gap-4 text-lg font-display">
-        <a href="{% url 'home' %}" class="hover:text-accent" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Home</a>
+        {% if request.resolver_match.url_name != 'home' %}
+          <a href="{% url 'home' %}" class="hover:text-accent" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Home</a>
+        {% endif %}
         <a href="{% url 'about' %}" class="hover:text-accent" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">About</a>
         <a href="{% url 'services' %}" class="hover:text-accent" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Services</a>
         <a href="{% url 'gallery' %}" class="hover:text-accent" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Gallery</a>
         <a href="{% url 'why_us' %}" class="hover:text-accent" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Why COJB</a>
-        <a href="{% url 'contact' %}" class="hover:text-accent" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Contact</a>
       </nav>
 
       <div class="mt-8">
-        <a href="{% url 'contact' %}" class="btn-primary text-white px-6 py-3 rounded-full font-semibold inline-flex" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Contact Us</a>
+        <a href="{% url 'contact' %}" class="btn-contact px-6 py-3 rounded-full font-semibold inline-flex transition" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true">Contact Us</a>
       </div>
 
       <div class="mt-auto pt-8 border-t border-white/10 text-sm text-slate-300">

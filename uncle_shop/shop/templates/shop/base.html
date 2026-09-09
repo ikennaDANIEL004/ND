@@ -188,8 +188,8 @@
     }
     .htmx-swapping main {
       opacity: 0;
-      transform: translateY(3px);
-      transition: opacity 90ms ease-out, transform 90ms ease-out;
+      transform: translateY(2px);
+      transition: opacity 100ms ease-out, transform 100ms ease-out;
     }
     .modal-open {
       overflow: hidden;
@@ -198,7 +198,7 @@
 
   {% block extra_css %}{% endblock %}
 </head>
-<body class="antialiased overflow-x-hidden" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true show:window:top" hx-push-url="true">
+<body class="antialiased overflow-x-hidden" hx-boost="true" hx-target="body" hx-swap="outerHTML swap:0ms settle:0ms show:window:top" hx-push-url="true">
 
 
 
@@ -207,7 +207,7 @@
     <div class="container-custom">
       <div class="rounded-3xl glass px-3 py-2.5 shadow-[0_20px_45px_-30px_rgba(15,23,42,0.4)] md:px-5 md:py-3">
         <div class="flex flex-nowrap items-center justify-between gap-3">
-        <a href="{% url 'home' %}" class="flex min-w-0 flex-1 items-center gap-2.5 md:gap-3" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true show:window:top">
+        <a href="{% url 'home' %}" class="flex min-w-0 flex-1 items-center gap-2.5 md:gap-3" hx-boost="true" hx-target="body" hx-swap="outerHTML swap:0ms settle:0ms show:window:top">
           <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-ink text-white font-display text-sm font-bold shadow-lg shadow-slate-900/20 logo-badge md:h-11 md:w-11">CO</div>
           <div class="min-w-0">
             <div class="truncate font-display text-sm font-semibold text-ink sm:text-base md:text-lg">Cause of Our Joy Builders</div>
@@ -218,14 +218,14 @@
         <div class="flex shrink-0 items-center gap-2 md:gap-4">
           <div class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-700">
             {% if request.resolver_match.url_name != 'home' %}
-              <a href="{% url 'home' %}" class="hover:text-accent" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true show:window:top">Home</a>
+              <a href="{% url 'home' %}" class="hover:text-accent" hx-boost="true" hx-target="body" hx-swap="outerHTML swap:0ms settle:0ms show:window:top">Home</a>
             {% endif %}
-            <a href="{% url 'about' %}" class="hover:text-accent" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true show:window:top">About</a>
-            <a href="{% url 'services' %}" class="hover:text-accent" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true show:window:top">Services</a>
-            <a href="{% url 'gallery' %}" class="hover:text-accent" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true show:window:top">Gallery</a>
-            <a href="{% url 'why_us' %}" class="hover:text-accent" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true show:window:top">Why COJB</a>
+            <a href="{% url 'about' %}" class="hover:text-accent" hx-boost="true" hx-target="body" hx-swap="outerHTML swap:0ms settle:0ms show:window:top">About</a>
+            <a href="{% url 'services' %}" class="hover:text-accent" hx-boost="true" hx-target="body" hx-swap="outerHTML swap:0ms settle:0ms show:window:top">Services</a>
+            <a href="{% url 'gallery' %}" class="hover:text-accent" hx-boost="true" hx-target="body" hx-swap="outerHTML swap:0ms settle:0ms show:window:top">Gallery</a>
+            <a href="{% url 'why_us' %}" class="hover:text-accent" hx-boost="true" hx-target="body" hx-swap="outerHTML swap:0ms settle:0ms show:window:top">Why COJB</a>
           </div>
-          <a href="{% url 'contact' %}" class="hidden md:inline-flex btn-contact px-5 py-2 rounded-full font-semibold transition" hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true show:window:top">Contact Us</a>
+          <a href="{% url 'contact' %}" class="hidden md:inline-flex btn-contact px-5 py-2 rounded-full font-semibold transition" hx-boost="true" hx-target="body" hx-swap="outerHTML swap:0ms settle:0ms show:window:top">Contact Us</a>
           <button id="mobileMenuButton" type="button" class="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-slate-200 bg-white/90 text-ink shadow-sm transition hover:border-accent/40 md:hidden" aria-controls="mobileMenu" aria-expanded="false" aria-label="Open navigation">
             <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -270,16 +270,16 @@
 
       <nav class="mt-8 flex flex-col gap-4 text-lg font-display">
         {% if request.resolver_match.url_name != 'home' %}
-          <a href="{% url 'home' %}" class="hover:text-accent" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true show:window:top">Home</a>
+          <a href="{% url 'home' %}" class="hover:text-accent" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML swap:0ms settle:0ms show:window:top">Home</a>
         {% endif %}
-        <a href="{% url 'about' %}" class="hover:text-accent" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true show:window:top">About</a>
-        <a href="{% url 'services' %}" class="hover:text-accent" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true show:window:top">Services</a>
-        <a href="{% url 'gallery' %}" class="hover:text-accent" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true show:window:top">Gallery</a>
-        <a href="{% url 'why_us' %}" class="hover:text-accent" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true show:window:top">Why COJB</a>
+        <a href="{% url 'about' %}" class="hover:text-accent" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML swap:0ms settle:0ms show:window:top">About</a>
+        <a href="{% url 'services' %}" class="hover:text-accent" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML swap:0ms settle:0ms show:window:top">Services</a>
+        <a href="{% url 'gallery' %}" class="hover:text-accent" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML swap:0ms settle:0ms show:window:top">Gallery</a>
+        <a href="{% url 'why_us' %}" class="hover:text-accent" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML swap:0ms settle:0ms show:window:top">Why COJB</a>
       </nav>
 
       <div class="mt-8">
-        <a href="{% url 'contact' %}" class="btn-contact px-6 py-3 rounded-full font-semibold inline-flex transition" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML transition:true show:window:top">Contact Us</a>
+        <a href="{% url 'contact' %}" class="btn-contact px-6 py-3 rounded-full font-semibold inline-flex transition" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML swap:0ms settle:0ms show:window:top">Contact Us</a>
       </div>
 
       <div class="mt-auto pt-8 border-t border-white/10 text-sm text-slate-300">

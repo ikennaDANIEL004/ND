@@ -94,3 +94,15 @@ class StaticViewSitemap(Sitemap):
 
     def location(self, item):
         return reverse(item)
+
+
+from django.http import HttpResponse
+
+
+def robots_txt(request):
+    content = """User-agent: *
+Allow: /
+
+Sitemap: https://causeofjoybuilders.com/sitemap.xml
+"""
+    return HttpResponse(content, content_type="text/plain")

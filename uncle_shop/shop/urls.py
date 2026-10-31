@@ -8,4 +8,5 @@ urlpatterns = [
     path('gallery/', views.gallery, name='gallery'),
     path('why-work-with-us/', views.why_us, name='why_us'),
     path('contact/', views.contact, name='contact'),
+    path("robots.txt", views.robots_txt, name="robots_txt"),
 ]

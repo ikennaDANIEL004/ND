@@ -222,7 +222,7 @@
             {% endif %}
             <a href="{% url 'about' %}" class="hover:text-accent" hx-boost="true" hx-target="body" hx-swap="outerHTML swap:0ms settle:0ms show:window:top">About</a>
             <a href="{% url 'services' %}" class="hover:text-accent" hx-boost="true" hx-target="body" hx-swap="outerHTML swap:0ms settle:0ms show:window:top">Services</a>
-            <a href="{% url 'gallery' %}" class="hover:text-accent" hx-boost="true" hx-target="body" hx-swap="outerHTML swap:0ms settle:0ms show:window:top">Gallery</a>
+            <a href="{% url 'gallery' %}"hx-boost="false" class="hover:text-accent" hx-boost="true" hx-target="body" hx-swap="outerHTML swap:0ms settle:0ms show:window:top">Gallery</a>
             <a href="{% url 'why_us' %}" class="hover:text-accent" hx-boost="true" hx-target="body" hx-swap="outerHTML swap:0ms settle:0ms show:window:top">Why COJB</a>
           </div>
           <a href="{% url 'contact' %}" class="hidden md:inline-flex btn-contact px-5 py-2 rounded-full font-semibold transition" hx-boost="true" hx-target="body" hx-swap="outerHTML swap:0ms settle:0ms show:window:top">Contact Us</a>
@@ -274,7 +274,7 @@
         {% endif %}
         <a href="{% url 'about' %}" class="hover:text-accent" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML swap:0ms settle:0ms show:window:top">About</a>
         <a href="{% url 'services' %}" class="hover:text-accent" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML swap:0ms settle:0ms show:window:top">Services</a>
-        <a href="{% url 'gallery' %}" class="hover:text-accent" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML swap:0ms settle:0ms show:window:top">Gallery</a>
+        <a href="{% url 'gallery' %}"hx-boost="false" class="hover:text-accent" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML swap:0ms settle:0ms show:window:top">Gallery</a>
         <a href="{% url 'why_us' %}" class="hover:text-accent" data-menu-close hx-boost="true" hx-target="body" hx-swap="outerHTML swap:0ms settle:0ms show:window:top">Why COJB</a>
       </nav>
 
@@ -319,7 +319,7 @@
             <a href="{% url 'home' %}" class="block hover:text-accent">Home</a>
             <a href="{% url 'about' %}" class="block hover:text-accent">About CEO</a>
             <a href="{% url 'services' %}" class="block hover:text-accent">Services</a>
-            <a href="{% url 'gallery' %}" class="block hover:text-accent">Gallery</a>
+            <a href="{% url 'gallery' %}"hx-boost="false" class="block hover:text-accent">Gallery</a>
             <a href="{% url 'why_us' %}" class="block hover:text-accent">Why Work With Us</a>
             <a href="{% url 'contact' %}" class="block hover:text-accent">Contact</a>
           </div>

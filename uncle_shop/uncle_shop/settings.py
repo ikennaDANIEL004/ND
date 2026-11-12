@@ -104,6 +104,20 @@ else:
     }
 
 
+# Contact form spam protection cache
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'django_cache_table',
+        'TIMEOUT': 600,
+        'OPTIONS': {
+            'MAX_ENTRIES': 10000,
+        },
+    }
+}
+
+
+
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
 
